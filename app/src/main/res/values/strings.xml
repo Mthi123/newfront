@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">PROJEEEEEEEEEECT</string>
+    <string name="app_logo">App Logo</string>
+    <string name="hu_xing">Hu Xing</string>
+    <string name="username">username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="continue_as_anonymous">Continue as Anonymous</string>
+    <string name="don_t_have_an_account_sign_up">Don’t have an account? Sign up</string>
+    <string name="guard_your_journey_fearless_at_every_step">Guard your journey,fearless at every step</string>
+    <string name="create_your_account">Create Your Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account_login">Already have an account? Login</string>
+    <string name="exit_stealth">Exit / Stealth</string>
+    <string name="messages">Messages</string>
+    <string name="resources">Resources</string>
+    <string name="sos">SOS</string>
+    <string name="submit_report">Submit Report</string>
+    <string name="welcome">Welcome</string>
+    <string name="type_a_message">Type a message...</string>
+    <string name="send">Send</string>
+    <string name="date_of_incident_optional">Date of incident (optional)</string>
+    <string name="describe_what_happened">Describe what happened...</string>
+    <string name="location_of_incident">Location of incident</string>
+    <string name="file_report">File Report</string>
+    <string name="type_of_incident_e_g_harassment_assault">Type of incident (e.g. harassment, assault)</string>
+    <string name="cancel">Cancel</string>
+    <string name="resource_content_goes_here">Resource content goes here...</string>
+    <string name="resource_title">Resource Title</string>
+    <string name="publish_resource">Publish Resource</string>
+    <string name="chat_with_users">Chat with Users</string>
+    <string name="view_user_reports">View User Reports</string>
+    <string name="counselor_dashboard">Counselor Dashboard</string>
+    <string name="user_reports">User Reports</string>
+    <string name="publish">Publish</string>
+    <string name="content">Content</string>
+    <string name="title">Title</string>
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="view_users">View Users</string>
+    <string name="report_statistics">Report Statistics</string>
+    <string name="view_reports">View Reports</string>
+    <string name="manage_counselors">Manage Counselors</string>
+    <string name="view_resources">View Resources</string>
+    <string name="background_image">Background Image</string>
+    <string-array name="user_roles">
+        <item>User</item>
+        <item>Counselor</item>
+        <item>NGO</item>
+        <item>Admin</item>
+    </string-array>
+
+</resources>
