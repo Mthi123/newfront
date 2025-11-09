@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projeeeeeeeeeect.auth.SessionManager;
 import com.example.projeeeeeeeeeect.network.ApiService;
 import com.example.projeeeeeeeeeect.network.RetrofitClient;
 import com.example.projeeeeeeeeeect.R;
@@ -47,13 +48,20 @@ public class CounsilorViewReports extends AppCompatActivity {
     }
 
     private void loadReports() {
-        // 1. Get the API service client
+        SessionManager sessionManager = new SessionManager(this);
+        String token = "Bearer " + sessionManager.getAuthToken();
+        int counselorId = sessionManager.getUserId();// Ensure this returns the correct ID
+
+        if (token == null || counselorId == -1) {
+            Toast.makeText(this, "Session expired or invalid. Please log in again.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         ApiService apiService = RetrofitClient.getApiService(this);
 
-        // 2. Prepare the API call for all reports
-        Call<List<Report>> call = apiService.getAllReports();
+        Call<List<Report>> call = apiService.getReportsByCounsellor(token, counselorId);
 
-        // 3. Execute the call asynchronously
+
         call.enqueue(new Callback<List<Report>>() {
             @Override
             public void onResponse(Call<List<Report>> call, Response<List<Report>> response) {
@@ -61,15 +69,13 @@ public class CounsilorViewReports extends AppCompatActivity {
                     reportList.clear();
                     reportList.addAll(response.body());
 
-                    // Prepare data for ArrayAdapter (string list for display)
                     List<String> displayReports = new ArrayList<>();
                     for (Report report : reportList) {
-                        // Use public getter methods
-                        String incidentTypeName = (report.getIncidentType() != null) ? report.getIncidentType().getName() : "Unknown Type";
+                        String incidentTypeName = (report.getIncidentType() != null)
+                                ? report.getIncidentType().getName() : "Unknown Type";
                         displayReports.add("ID: " + report.getId() + " | " + incidentTypeName + " | Loc: " + report.getLocation());
                     }
 
-                    // Update the ListView with fetched data
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(
                             CounsilorViewReports.this,
                             android.R.layout.simple_list_item_1,
@@ -78,10 +84,8 @@ public class CounsilorViewReports extends AppCompatActivity {
                     reportsListView.setAdapter(adapter);
 
                     Toast.makeText(CounsilorViewReports.this, "Reports loaded successfully!", Toast.LENGTH_SHORT).show();
-
                 } else {
-                    Toast.makeText(CounsilorViewReports.this, "Failed to load reports. Response code: " + response.code(), Toast.LENGTH_LONG).show();
-                    // Fallback to display empty list if API fails
+                    Toast.makeText(CounsilorViewReports.this, "Failed to load reports. Code: " + response.code(), Toast.LENGTH_LONG).show();
                     reportsListView.setAdapter(new ArrayAdapter<>(CounsilorViewReports.this, android.R.layout.simple_list_item_1, new ArrayList<>()));
                 }
             }
@@ -89,7 +93,6 @@ public class CounsilorViewReports extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Report>> call, Throwable t) {
                 Toast.makeText(CounsilorViewReports.this, "Network error: " + t.getMessage(), Toast.LENGTH_LONG).show();
-                // Fallback to display empty list if network fails
                 reportsListView.setAdapter(new ArrayAdapter<>(CounsilorViewReports.this, android.R.layout.simple_list_item_1, new ArrayList<>()));
             }
         });

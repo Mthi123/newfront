@@ -33,6 +33,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Header;
+
 
 // --- Your API Interface (This part was already correct) ---
 public interface ApiService {
@@ -63,7 +65,15 @@ public interface ApiService {
     @GET("api/reports/status")
     Call<List<ReportStatusStat>> getReportsByStatus();
 
-    @POST("api/resources") // <-- NEW ENDPOINT
+    // 5. View Reports By Counsellor
+    @GET("api/reports/counsellor/{id}")
+    Call<List<Report>> getReportsByCounsellor(
+            @Header("Authorization") String authToken,
+            @Path("id") int counsellorId
+    );
+
+
+    @POST("api/articles") // <-- NEW ENDPOINT
     Call<PublishArticleResponse> publishResource(@Body PublishArticleRequest request);
 
     @POST("api/reports") // <-- NEW ENDPOINT: SUBMIT A REPORT
