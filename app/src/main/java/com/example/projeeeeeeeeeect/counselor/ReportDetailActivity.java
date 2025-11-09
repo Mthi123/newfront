@@ -76,4 +76,53 @@ public class ReportDetailActivity extends AppCompatActivity {
         tvDateReported.setText(report.getDateReported());
         tvStatus.setText(statusType);
     }
+
+    // --- API Call to start the chat session ---
+    private void startChatSession(Report report) {
+        // We use the authenticated user's ID as the counselorId
+        int counselorId = sessionManager.getUserId(); //
+
+        if (counselorId == -1) {
+            Toast.makeText(this, "Error: Counselor ID not found. Please re-login.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        int userId = report.getUserId();
+        int reportId = report.getId();
+
+        // 1. Create the request model
+        ChatStartRequest request = new ChatStartRequest(userId, counselorId, reportId); //
+
+        // 2. Get the API service
+        ApiService apiService = RetrofitClient.getApiService(this); //
+
+        // 3. Make the network call
+        Call<ChatStartResponse> call = apiService.startChat(request); //
+
+        call.enqueue(new Callback<ChatStartResponse>() {
+            @Override
+            public void onResponse(Call<ChatStartResponse> call, Response<ChatStartResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ChatStartResponse chatResponse = response.body(); //
+
+                    Toast.makeText(ReportDetailActivity.this, "Chat session started!", Toast.LENGTH_SHORT).show();
+
+                    // 4. Launch Conversation Activity with the tokens
+                    Intent chatIntent = new Intent(ReportDetailActivity.this, Conversation.class); //
+                    chatIntent.putExtra("channelUrl", chatResponse.channelUrl);
+                    chatIntent.putExtra("sessionToken", chatResponse.sessionToken);
+                    chatIntent.putExtra("counselorName", "User " + userId);
+
+                    startActivity(chatIntent);
+                } else {
+                    Toast.makeText(ReportDetailActivity.this, "Failed to start chat. Code: " + response.code(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ChatStartResponse> call, Throwable t) {
+                Toast.makeText(ReportDetailActivity.this, "Network Error: Could not start chat. " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }
