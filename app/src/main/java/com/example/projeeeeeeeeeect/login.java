@@ -67,7 +67,7 @@ public class login extends AppCompatActivity {
                         }
                         // --- END SAVE TOKEN ---
 
-                        int roleId = response.body().getUser().role_id;;
+                        int roleId = response.body().getUser().getRoleId();
 
                         // 3=Admin, 2=Counselor, 1=User (or default)
                         switch (roleId) {

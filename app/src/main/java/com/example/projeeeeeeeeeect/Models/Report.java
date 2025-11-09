@@ -35,6 +35,9 @@ public class Report {
 
     @SerializedName("StatusType")
     StatusType statusType;
+    @SerializedName("assigned_counsellor_id")
+    private int assignedCounsellorId;
+
 
     // --- CRITICAL FIX: GETTER METHODS ---
     public int getId() { return id; }
@@ -50,4 +53,5 @@ public class Report {
     public IncidentType getIncidentType() { return incidentType; }
 
     public StatusType getStatusType() { return statusType; }
+    public int getAssignedCounsellorId() { return assignedCounsellorId; }
 }

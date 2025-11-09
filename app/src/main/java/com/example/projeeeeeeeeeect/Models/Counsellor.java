@@ -2,7 +2,7 @@ package com.example.projeeeeeeeeeect.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+public class Counsellor {
     @SerializedName("id")
     private int id;
 
@@ -12,15 +12,12 @@ public class User {
     @SerializedName("email")
     private String email;
 
-    @SerializedName("role_id")
-    private int roleId;
-
-    @SerializedName("is_anonymous")
-    private boolean isAnonymous;
-
     public int getId() { return id; }
     public String getName() { return name; }
     public String getEmail() { return email; }
-    public int getRoleId() { return roleId; }
-    public boolean isAnonymous() { return isAnonymous; }
+
+    @Override
+    public String toString() {
+        return name; // For spinner display
+    }
 }

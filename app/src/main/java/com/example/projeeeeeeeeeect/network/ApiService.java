@@ -19,6 +19,12 @@ import com.example.projeeeeeeeeeect.Models.UserLoginRequest;
 import com.example.projeeeeeeeeeect.Models.UserLoginResponse;
 import com.example.projeeeeeeeeeect.Models.IncidentTypesResponse;
 import com.google.gson.annotations.SerializedName;
+import com.example.projeeeeeeeeeect.Models.AssignReportRequest;
+import com.example.projeeeeeeeeeect.Models.AssignReportResponse;
+import com.example.projeeeeeeeeeect.Models.CounsellorsResponse;
+import com.example.projeeeeeeeeeect.Models.SignUpRequest;
+import com.example.projeeeeeeeeeect.Models.SignUpResponse;
+import com.example.projeeeeeeeeeect.Models.ReportsResponse;
 
 import java.util.List;
 
@@ -71,6 +77,23 @@ public interface ApiService {
 
     @GET("api/reports/types")
     Call<IncidentTypesResponse> getIncidentTypes();
+
+    @GET("api/reports")
+    Call<List<Report>> getReports();
+
+    @POST("api/reports/assign/{reportId}")
+    Call<AssignReportResponse> assignCounsellor(
+            @Path("reportId") int reportId,
+            @Body AssignReportRequest request
+    );
+
+    @GET("api/users/counsellors")
+    Call<CounsellorsResponse> getCounsellors();
+
+    @POST("api/auth")
+    Call<SignUpResponse>registerUser(@Body SignUpRequest request);
+
+
 
 }
 
