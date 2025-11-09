@@ -3,9 +3,10 @@ package com.example.projeeeeeeeeeect.Models;
 import com.google.gson.annotations.SerializedName;
 
 public class SubmitReportRequest {
-    // These fields match the data collected from the form
-    @SerializedName("incident_type")
-    String incidentType;
+
+    // --- CRITICAL FIX: Changed from String to int ---
+    @SerializedName("incident_type_id")
+    int incidentTypeId; // Renamed to clarify it's an ID
 
     @SerializedName("location")
     String location;
@@ -16,11 +17,9 @@ public class SubmitReportRequest {
     @SerializedName("date_of_incident")
     String dateOfIncident;
 
-    // The backend is typically responsible for setting user_id based on the session token,
-    // but these are the explicit fields collected from the form.
-
-    public SubmitReportRequest(String incidentType, String location, String description, String dateOfIncident) {
-        this.incidentType = incidentType;
+    // --- CRITICAL FIX: Changed constructor parameter from String to int ---
+    public SubmitReportRequest(int incidentTypeId, String location, String description, String dateOfIncident) {
+        this.incidentTypeId = incidentTypeId; // Now takes an int
         this.location = location;
         this.description = description;
         this.dateOfIncident = dateOfIncident;

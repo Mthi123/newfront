@@ -17,6 +17,8 @@ import com.example.projeeeeeeeeeect.Models.SubmitReportRequest;
 import com.example.projeeeeeeeeeect.Models.SubmitReportResponse;
 import com.example.projeeeeeeeeeect.Models.UserLoginRequest;
 import com.example.projeeeeeeeeeect.Models.UserLoginResponse;
+import com.example.projeeeeeeeeeect.Models.IncidentTypesResponse;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -67,4 +69,14 @@ public interface ApiService {
     @POST("api/chat/send")
     Call<SendMessageResponse> sendMessage(@Body SendMessageRequest request);
 
+    @GET("api/reports/types")
+    Call<IncidentTypesResponse> getIncidentTypes();
+
 }
+
+//package com.example.projeeeeeeeeeect.Models;
+//import com.google.gson.annotations.SerializedName;
+//import java.util.List;
+
+
+
