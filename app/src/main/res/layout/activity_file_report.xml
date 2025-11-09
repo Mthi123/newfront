@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.FileReport">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"
+        android:contentDescription="@string/background_image" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" /> <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/file_report"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp" />
+
+        <Spinner
+            android:id="@+id/etIncidentType"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:padding="8dp"
+            android:backgroundTint="@android:color/white"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/type_of_incident_e_g_harassment_assault"/>
+
+        <EditText
+            android:id="@+id/etLocation"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/location_of_incident"
+            android:textColor="@android:color/white"
+            android:textColorHint="#CCCCCC"
+            android:backgroundTint="@android:color/white"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="@string/describe_what_happened"
+            android:textColor="@android:color/white"
+            android:textColorHint="#CCCCCC"
+            android:backgroundTint="@android:color/white"
+            android:gravity="top"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/date_of_incident_optional"
+            android:textColor="@android:color/white"
+            android:textColorHint="#CCCCCC"
+            android:backgroundTint="@android:color/white"
+            android:inputType="date" />
+
+        <Button
+            android:id="@+id/btnSubmitReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_report"
+            android:backgroundTint="@color/soft_pink_dark"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/btnCancelReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:backgroundTint="@color/soft_pink_dark"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+        <color name="soft_pink">#FFF0F5</color> <!-- Lavender Blush -->
+        <color name="soft_pink_dark">#FFE4E9</color> <!-- Slightly darker -->
+
+        <!-- Alternative soft pink options -->
+        <color name="soft_pink_light">#E47EE4</color> <!-- Misty Rose -->
+        <color name="soft_pink_warm">#7A3483</color> <!-- Light Pink -->
+
+        <color name="colorPrimary">#E91E63</color> <!-- Pink accent -->
+        <color name="colorPrimaryDark">#C2185B</color>
+        <color name="colorAccent">#FF4081</color>
+
+</resources>
