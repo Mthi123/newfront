@@ -65,6 +65,16 @@
                 android:layout_marginBottom="16dp"/>
 
             <Button
+                android:id="@+id/articlesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/articles"
+                android:backgroundTint="@color/soft_pink"
+                android:textColor="@color/black"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
                 android:id="@+id/resourcesButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

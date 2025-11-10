@@ -11,6 +11,7 @@ import com.example.projeeeeeeeeeect.Models.PublishArticleResponse;
 import com.example.projeeeeeeeeeect.Models.Report;
 import com.example.projeeeeeeeeeect.Models.ReportStatusStat;
 import com.example.projeeeeeeeeeect.Models.ReportTypeStat;
+import com.example.projeeeeeeeeeect.Models.Resource;
 import com.example.projeeeeeeeeeect.Models.SendMessageRequest;
 import com.example.projeeeeeeeeeect.Models.SendMessageResponse;
 import com.example.projeeeeeeeeeect.Models.SubmitReportRequest;
@@ -76,6 +77,8 @@ public interface ApiService {
     @POST("api/articles") // <-- NEW ENDPOINT
     Call<PublishArticleResponse> publishResource(@Body PublishArticleRequest request);
 
+
+
     @POST("api/reports") // <-- NEW ENDPOINT: SUBMIT A REPORT
     Call<SubmitReportResponse> submitReport(@Body SubmitReportRequest request);
 
@@ -84,6 +87,7 @@ public interface ApiService {
 
     @POST("api/chat/send")
     Call<SendMessageResponse> sendMessage(@Body SendMessageRequest request);
+
 
     @GET("api/reports/types")
     Call<IncidentTypesResponse> getIncidentTypes();
@@ -103,6 +107,9 @@ public interface ApiService {
     @POST("api/auth")
     Call<SignUpResponse>registerUser(@Body SignUpRequest request);
 
+    // <---RESOURCES--->
+    @GET("api/resources")
+    Call<List<Resource>> getAllResources();
 
 
 }

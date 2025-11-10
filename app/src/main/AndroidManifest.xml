@@ -59,6 +59,8 @@
         <activity
             android:name=".login"
             android:exported="false" />
+        <activity android:name=".user.ResourceDirectoryActivity"
+            android:exported="false"/>
         <activity
             android:name=".splash_screen"
             android:exported="true">
