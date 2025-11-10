@@ -10,7 +10,6 @@ import com.example.projeeeeeeeeeect.R;
 import com.example.projeeeeeeeeeect.Articles;
 import com.example.projeeeeeeeeeect.admin.mainbtns.AdminManageCounselorsActivity;
 import com.example.projeeeeeeeeeect.admin.mainbtns.AdminReportStatsActivity;
-import com.example.projeeeeeeeeeect.admin.mainbtns.AdminViewUsersActivity;
 
 public class AdminDashboardActivity extends AppCompatActivity {
 
@@ -34,16 +33,18 @@ public class AdminDashboardActivity extends AppCompatActivity {
         });
 
         viewReportsBtn.setOnClickListener(v -> {
-            // Open activity to view all reports
+            // Open activity to view report statistics
             Intent intent = new Intent(this, AdminReportStatsActivity.class);
             startActivity(intent);
         });
 
+        // --- UPDATED LOGIC: Launch AdminManageCounselorsActivity ---
         manageCounselorsBtn.setOnClickListener(v -> {
-            // Open activity to manage counselors/NGOs
+            // Open activity to manage counselors/NGOs (Assignment screen)
             Intent intent = new Intent(this, AdminManageCounselorsActivity.class);
             startActivity(intent);
         });
+        // -----------------------------------------------------------
 
         viewResourcesBtn.setOnClickListener(v -> {
             // Open activity to view all resources

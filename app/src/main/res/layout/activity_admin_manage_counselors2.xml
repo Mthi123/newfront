@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".admin.AdminManageCounselorsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report Assignment Dashboard"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Section: Unassigned Reports List -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unassigned Reports"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <ListView
+        android:id="@+id/unassignedReportsListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/edit_text_border"
+        android:padding="4dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvSelectedReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selected Report: None"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:textStyle="italic"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/edit_text_border"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Section: Counselor Assignment -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assign to Counselor"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <Spinner
+        android:id="@+id/counselorSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:spinnerMode="dropdown"
+        android:background="@drawable/edit_text_border"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnAssignReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Assign Selected Report"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:enabled="false"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- NEW BUTTON: Navigate to Create Counselor -->
+    <Button
+        android:id="@+id/btnCreateCounselor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create New Counselor/NGO Account"
+        android:backgroundTint="@color/soft_pink_dark"
+        android:textColor="@color/black"/>
+
+</LinearLayout>

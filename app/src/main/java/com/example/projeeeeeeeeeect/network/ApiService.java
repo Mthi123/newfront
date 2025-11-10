@@ -17,6 +17,12 @@ import com.example.projeeeeeeeeeect.Models.SubmitReportRequest;
 import com.example.projeeeeeeeeeect.Models.SubmitReportResponse;
 import com.example.projeeeeeeeeeect.Models.UserLoginRequest;
 import com.example.projeeeeeeeeeect.Models.UserLoginResponse;
+import com.example.projeeeeeeeeeect.Models.IncidentType;
+import com.example.projeeeeeeeeeect.Models.CounselorListResponse;
+import com.example.projeeeeeeeeeect.Models.AssignReportRequest;
+import com.example.projeeeeeeeeeect.Models.UserListResponse;
+import com.example.projeeeeeeeeeect.Models.MessageHistoryResponse;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -26,45 +32,97 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
-// --- Your API Interface (This part was already correct) ---
+// --- Your API Interface ---
 public interface ApiService {
 
-    // --- AUTH ---
+    // ----------------------------------------------------
+    // --- AUTHENTICATION & USER MANAGEMENT ---
+    // ----------------------------------------------------
+
+    // User Login
     @POST("api/auth/login")
     Call<UserLoginResponse> loginUser(@Body UserLoginRequest loginRequest);
 
+    // Public User Registration
+    @POST("api/auth/register")
+    Call<CreateUserResponse> registerUser(@Body CreateUserRequest createUserRequest);
+
+    // Admin-level User Creation (e.g., creating a Counselor manually)
     @POST("api/roles/admin")
     Call<CreateUserResponse> createUser(@Body CreateUserRequest createUserRequest);
 
+    // Admin: View all users
+    @GET("api/users")
+    Call<UserListResponse> getAllUsers();
 
-    // --- REPORTS ---
+    // Admin: Fetch all users with the role of Counselor
+    // --- FIX: Corrected API path from 'counselors' to 'counsellors' ---
+    @GET("api/users/counsellors")
+    Call<CounselorListResponse> getAllCounselors();
 
-    // 1. View all reports
+    // Admin: Fetch all organizations/NGOs (for counselor assignment)
+   // @GET("api/organizations")
+    //Call<OrganizationListResponse> getAllOrganizations();
+
+
+    // ----------------------------------------------------
+    // --- REPORTING & ASSIGNMENT ---
+    // ----------------------------------------------------
+
+    // Submit a new report (User action)
+    @POST("api/reports")
+    Call<SubmitReportResponse> submitReport(@Body SubmitReportRequest request);
+
+    // Fetch incident types (for the submission form spinner)
+    @GET("api/reports/types")
+    Call<IncidentType> getIncidentType();
+
+    // View all reports (Counselor/Admin default view)
     @GET("api/reports")
     Call<List<Report>> getAllReports();
 
-    // 2. View reports by type
+    // Fetch all reports that are UNASSIGNED (Admin manage counselors view)
+    @GET("api/reports/unassigned")
+    Call<List<Report>> getUnassignedReports();
+
+    // Assign a report to a counselor (Admin action)
+    @POST("api/reports/assign")
+    Call<SubmitReportResponse> assignReport(@Body AssignReportRequest request);
+
+    // Report Stats: View reports by type
     @GET("api/reports/type")
     Call<List<ReportTypeStat>> getReportsByType();
 
-    // 3. View incident types by location
+    // Report Stats: View incident types by location
     @GET("api/reports/incident-types/location/{location}")
     Call<List<ReportTypeStat>> getReportsByLocation(@Path("location") String location);
 
-    // 4. View reports by status
+    // Report Stats: View reports by status
     @GET("api/reports/status")
     Call<List<ReportStatusStat>> getReportsByStatus();
 
-    @POST("api/resources") // <-- NEW ENDPOINT
-    Call<PublishArticleResponse> publishResource(@Body PublishArticleRequest request);
+    // ----------------------------------------------------
+    // --- CHAT & MESSAGING ---
+    // ----------------------------------------------------
 
-    @POST("api/reports") // <-- NEW ENDPOINT: SUBMIT A REPORT
-    Call<SubmitReportResponse> submitReport(@Body SubmitReportRequest request);
-
+    // Start a new chat session (Counselor/User action)
     @POST("api/chat/start")
     Call<ChatStartResponse> startChat(@Body ChatStartRequest request);
 
+    // Send a message within an existing channel
     @POST("api/chat/send")
     Call<SendMessageResponse> sendMessage(@Body SendMessageRequest request);
 
+    // Load message history for a channel
+    @GET("api/chat/history/{channelUrl}")
+    Call<MessageHistoryResponse> getMessageHistory(@Path("channelUrl") String channelUrl);
+
+
+    // ----------------------------------------------------
+    // --- RESOURCES ---
+    // ----------------------------------------------------
+
+    // Publish a resource (Counselor action)
+    @POST("api/articles")
+    Call<PublishArticleResponse> publishResource(@Body PublishArticleRequest request);
 }

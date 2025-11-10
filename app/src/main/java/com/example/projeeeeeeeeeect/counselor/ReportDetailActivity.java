@@ -1,5 +1,7 @@
 package com.example.projeeeeeeeeeect.counselor;
 
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -8,17 +10,27 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projeeeeeeeeeect.Models.ChatStartRequest;
+import com.example.projeeeeeeeeeect.Models.ChatStartResponse;
 import com.example.projeeeeeeeeeect.R;
 import com.example.projeeeeeeeeeect.Conversation;
 import com.example.projeeeeeeeeeect.Models.Report;
 import com.example.projeeeeeeeeeect.Models.IncidentType;
 import com.example.projeeeeeeeeeect.Models.StatusType;
+import com.example.projeeeeeeeeeect.auth.SessionManager;
+import com.example.projeeeeeeeeeect.network.ApiService;
+import com.example.projeeeeeeeeeect.network.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ReportDetailActivity extends AppCompatActivity {
 
     private TextView tvReportId, tvIncidentType, tvLocation, tvDescription, tvDateOfIncident, tvDateReported, tvStatus;
     private Button btnStartChat;
+    private SessionManager sessionManager;
 
     // Define the keys used for passing Intent data (Must match CounsilorViewReports.java)
     public static final String EXTRA_REPORT = "extra_report_object";
@@ -27,6 +39,7 @@ public class ReportDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reports);
+        sessionManager = new SessionManager(this);
 
         // 1. Initialize TextViews and Button
         tvReportId = findViewById(R.id.tvReportId);
