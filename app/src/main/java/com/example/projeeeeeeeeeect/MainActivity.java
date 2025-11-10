@@ -22,18 +22,14 @@ import com.google.android.gms.location.LocationServices;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button submitReportButton, sosButton, resourcesButton, messagesButton, stealthButton;
+    private Button submitReportButton, sosButton, resourcesButton, messagesButton, stealthButton, articlesButton;
     private TextView welcomeTextView;
 
     private boolean isAnonymous;
     private FusedLocationProviderClient fusedLocationClient;
 
     private static final int LOCATION_PERMISSION_CODE = 101;
-
-    // Registered user emergency contact (replace with dynamic fetch if needed)
     private static final String REGISTERED_EMERGENCY_CONTACT = "5554";
-
-    // GBV helpline / police number (always included)
     private static final String GBV_HELPLINE = "5556";
 
     @Override
@@ -41,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Get data from login intent
         isAnonymous = getIntent().getBooleanExtra("isAnonymous", false);
 
         // Initialize UI components
@@ -51,39 +46,43 @@ public class MainActivity extends AppCompatActivity {
         resourcesButton = findViewById(R.id.resourcesButton);
         messagesButton = findViewById(R.id.messagesButton);
         stealthButton = findViewById(R.id.stealthButton);
+        articlesButton = findViewById(R.id.articlesButton);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // Display welcome text
         welcomeTextView.setText("Welcome");
 
-        // Hide Messages button for anonymous users
+        // Hide buttons for anonymous users
         if (isAnonymous) {
             messagesButton.setVisibility(View.GONE);
+            // This prevents the 401 error for anonymous users
+            resourcesButton.setVisibility(View.GONE);
         }
 
-        // Submit Report button
+        // --- ALL CLICK LISTENERS ---
+
+        resourcesButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, com.example.projeeeeeeeeeect.user.ResourceDirectoryActivity.class);
+            startActivity(intent);
+        });
+
         submitReportButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, FileReport.class);
             startActivity(intent);
         });
 
-        // SOS button
         sosButton.setOnClickListener(v -> sendEmergencyAlert());
 
-        // Resources button
-        resourcesButton.setOnClickListener(v -> {
+        articlesButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, Articles.class);
             startActivity(intent);
         });
 
-        // Messages button (only for registered users)
         messagesButton.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, Conversation.class);
             startActivity(intent);
         });
 
-        // Stealth / Exit button
         stealthButton.setOnClickListener(v -> {
             Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.whatsapp");
             if (launchIntent != null) {
@@ -95,7 +94,12 @@ public class MainActivity extends AppCompatActivity {
             }
             finish();
         });
-    }
+
+    } // --- End of onCreate() method ---
+
+
+    // --- METHODS MOVED HERE ---
+    // These methods belong to the MainActivity class, not onCreate
 
     private void sendEmergencyAlert() {
         // Check location permission
@@ -125,12 +129,9 @@ public class MainActivity extends AppCompatActivity {
 
         String recipients;
 
-        // Determine recipients based on anonymity
         if (isAnonymous) {
-            // Anonymous users: only GBV helpline
             recipients = GBV_HELPLINE;
         } else {
-            // Registered users: emergency contact + GBV helpline
             recipients = REGISTERED_EMERGENCY_CONTACT + ";" + GBV_HELPLINE;
         }
 
@@ -144,4 +145,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Unable to open SMS app: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
+
 }
+
