@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".splash_screen">
 
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"
+        android:contentDescription="@string/background_image" />
+
+    <!-- Dark overlay for readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" /> <!-- 50% black tint -->
+
+
+    <!-- Content Layer (Logo and Text) -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <!-- App logo -->
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:src="@drawable/poster"
             android:contentDescription="@string/app_logo" />
 
@@ -41,6 +61,5 @@
             android:layout_below="@id/appNameText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp" />
-
     </RelativeLayout>
-
+</RelativeLayout>

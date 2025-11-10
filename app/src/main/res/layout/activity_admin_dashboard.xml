@@ -1,53 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center"
     tools:context=".admin.AdminDashboardActivity">
 
-
-        <TextView
-            android:id="@+id/titleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/admin_dashboard"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="32dp" />
-
-        <Button
-            android:id="@+id/viewUsersBtn"
+        <!-- Background Image -->
+        <ImageView
+            android:id="@+id/backgroundImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/view_users"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/back"
+            android:contentDescription="@string/background_image" />
 
-        <Button
-            android:id="@+id/viewReportsBtn"
+        <!-- Dark overlay for readability -->
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/report_statistics"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="match_parent"
+            android:background="#80000000" /> <!-- 50% black tint -->
 
-        <Button
-            android:id="@+id/manageCounselorsBtn"
+        <LinearLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/manage_counselors"
-            android:layout_marginBottom="16dp" />
-
-        <Button
-            android:id="@+id/viewResourcesBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/view_resources"
-            android:layout_marginBottom="16dp" />
-
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center">
 
 
+                <TextView
+                    android:id="@+id/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_dashboard"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_marginBottom="32dp" />
+
+                <Button
+                    android:id="@+id/viewUsersBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/view_users"
+                    android:backgroundTint="@color/soft_pink_dark"
+                    android:layout_marginBottom="16dp" />
+
+                <Button
+                    android:id="@+id/viewReportsBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_statistics"
+                    android:backgroundTint="@color/soft_pink_dark"
+                    android:layout_marginBottom="16dp" />
+
+                <Button
+                    android:id="@+id/manageCounselorsBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manage_counselors"
+                    android:backgroundTint="@color/soft_pink_dark"
+                    android:layout_marginBottom="16dp" />
+
+                <Button
+                    android:id="@+id/viewResourcesBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/view_resources"
+                    android:backgroundTint="@color/soft_pink_dark"
+                    android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+</RelativeLayout>

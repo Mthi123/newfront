@@ -17,6 +17,9 @@
         android:theme="@style/Theme.PROJEEEEEEEEEECT"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".admin.UserDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.AdminViewUsersActivity"
             android:exported="false" />
         <activity
