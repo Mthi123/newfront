@@ -51,7 +51,7 @@ public class AdminManageCounselorsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_manage_counselors);
+        setContentView(R.layout.activity_admin_manage_counselors2);
 
         // Bind Views
         unassignedReportsListView = findViewById(R.id.unassignedReportsListView);
@@ -70,10 +70,10 @@ public class AdminManageCounselorsActivity extends AppCompatActivity {
         btnAssignReport.setOnClickListener(v -> assignReport());
 
         // --- NEW BUTTON LISTENER ---
-        btnCreateCounselor.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AdminCreateCounselorActivity.class);
-            startActivity(intent);
-        });
+       // btnCreateCounselor.setOnClickListener(v -> {
+         //   Intent intent = new Intent(this, AdminCreateCounselorActivity.class);
+           // startActivity(intent);
+        //});
         // ---------------------------
     }
 
