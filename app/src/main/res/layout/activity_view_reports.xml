@@ -1,142 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     tools:context=".counselor.ReportDetailActivity">
 
-    <LinearLayout
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"
+        android:contentDescription="@string/background_image" />
+
+    <!-- Dark overlay for readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" /> <!-- 50% black tint -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Report Details"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginBottom="24dp" />
-
-        <TextView
-            android:id="@+id/tvReportId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:textStyle="italic"
-            android:layout_marginBottom="16dp"
-            tools:text="Report ID: 12345" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Incident Type:"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/tvIncidentType"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/edit_text_border"
-            android:layout_marginBottom="16dp"
-            tools:text="Physical Abuse" />
+            android:orientation="vertical"
+            android:background="#80FFFFFF"
+            android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/location_of_incident"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/tvLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/edit_text_border"
-            android:layout_marginBottom="16dp"
-            tools:text="123 Main Street, City Center" />
+            <!-- Header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report Details"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="24dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/describe_what_happened"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/edit_text_border"
-            android:minHeight="100dp"
-            android:gravity="top"
-            android:layout_marginBottom="16dp"
-            tools:text="I was walking home when a man approached me..." />
+            <!-- Report ID -->
+            <TextView
+                android:id="@+id/tvReportId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="italic"
+                android:layout_marginBottom="16dp"
+                tools:text="Report ID: 12345" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/date_of_incident_optional"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/tvDateOfIncident"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/edit_text_border"
-            android:layout_marginBottom="16dp"
-            tools:text="2025-05-15" />
+            <!-- Incident Type -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incident Type:"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvIncidentType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="Physical Abuse" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Report Filed On:"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/tvDateReported"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/edit_text_border"
-            android:layout_marginBottom="16dp"
-            tools:text="2025-11-09" />
+            <!-- Location -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_of_incident"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="123 Main Street, City Center" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Current Status:"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="8dp"/>
-        <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:background="@drawable/edit_text_border"
-            android:layout_marginBottom="16dp"
-            tools:text="In Progress" />
+            <!-- Description -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/describe_what_happened"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:minHeight="100dp"
+                android:gravity="top"
+                android:layout_marginBottom="16dp"
+                tools:text="I was walking home when a man approached me..." />
 
-        <Button
-            android:id="@+id/btnStartChat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/chat_with_users"
-            android:backgroundTint="@color/colorAccent"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="16dp" />
+            <!-- Date of Incident -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_of_incident_optional"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvDateOfIncident"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="2025-05-15" />
 
-    </LinearLayout>
-</ScrollView>
+            <!-- Date Reported -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report Filed On:"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvDateReported"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="2025-11-09" />
+
+            <!-- Status -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Status:"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="In Progress" />
+
+            <!-- Action Button (Start Chat) -->
+            <Button
+                android:id="@+id/btnStartChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/chat_with_users"
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

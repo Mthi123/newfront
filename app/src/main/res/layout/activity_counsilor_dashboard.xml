@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center"
     tools:context=".counselor.CounsilorDashboard">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"
+        android:contentDescription="@string/background_image" />
+
+    <!-- Dark overlay for readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" /> <!-- 50% black tint -->
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center">
 
 
         <TextView
@@ -16,8 +34,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/counselor_dashboard"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:textStyle="bold"
+            android:textColor="@android:color/white"
             android:layout_marginBottom="32dp" />
 
         <Button
@@ -25,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/view_user_reports"
+            android:backgroundTint="@color/soft_pink_dark"
             android:layout_marginBottom="16dp" />
 
         <Button
@@ -32,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/chat_with_users"
+            android:backgroundTint="@color/soft_pink_dark"
             android:layout_marginBottom="16dp" />
 
         <Button
@@ -39,8 +60,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/publish_resource"
+            android:backgroundTint="@color/soft_pink_dark"
             android:layout_marginBottom="16dp" />
 
     </LinearLayout>
-
-
+</RelativeLayout>

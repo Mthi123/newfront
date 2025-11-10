@@ -1,59 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="24dp"
     tools:context=".admin.mainbtns.AdminReportStatsActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Report Statistics"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="32dp" />
-
-    <!-- Button 1: View a list of all reports -->
-    <Button
-        android:id="@+id/viewAllReportsBtn"
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View All Reports"
-        android:backgroundTint="@color/soft_pink_dark"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"
+        android:contentDescription="@string/background_image" />
 
-    <!-- Button 2: View reports by Incident -->
-    <Button
-        android:id="@+id/reportsByTypeBtn"
+    <!-- Dark overlay for readability -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Reports by Type"
-        android:backgroundTint="@color/soft_pink_dark"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="match_parent"
+        android:background="#80000000" /> <!-- 50% black tint -->
 
-    <!-- Button 3: View Incident Types by location -->
-    <Button
-        android:id="@+id/reportsByLocationBtn"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Reports by Location"
-        android:backgroundTint="@color/soft_pink_dark"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp"/>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:padding="24dp">
 
-    <!-- Button 4: View reports over time -->
-    <Button
-        android:id="@+id/reportsByStatusBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Reports by Time"
-        android:backgroundTint="@color/soft_pink_dark"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="#80FFFFFF"
+            android:padding="16dp">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report Statistics"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="32dp" />
+
+            <!-- Button 1: View a list of all reports -->
+            <Button
+                android:id="@+id/viewAllReportsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View All Reports"
+                android:backgroundTint="@color/soft_pink_dark"
+                android:textColor="@color/black"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Button 2: View reports by Incident -->
+            <Button
+                android:id="@+id/reportsByTypeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Reports by Type"
+                android:backgroundTint="@color/soft_pink_dark"
+                android:textColor="@color/black"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Button 3: View Incident Types by location -->
+            <Button
+                android:id="@+id/reportsByLocationBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Reports by Location"
+                android:backgroundTint="@color/soft_pink_dark"
+                android:textColor="@color/black"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Button 4: View reports over time -->
+            <Button
+                android:id="@+id/reportsByStatusBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Reports by Time"
+                android:backgroundTint="@color/soft_pink_dark"
+                android:textColor="@color/black"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
