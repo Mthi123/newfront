@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/describe_what_happened"
+            android:text="@string/description"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="8dp"/>
@@ -84,7 +84,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/date_of_incident_optional"
+            android:text="@string/date_of_incident"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="8dp"/>
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Report Filed On:"
+            android:text="@string/report_filed_on"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="8dp"/>
@@ -116,7 +116,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Current Status:"
+            android:text="@string/current_status"
             android:textStyle="bold"
             android:textColor="@color/colorPrimary"
             android:layout_marginTop="8dp"/>

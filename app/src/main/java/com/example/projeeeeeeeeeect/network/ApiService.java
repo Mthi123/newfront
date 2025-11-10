@@ -11,21 +11,12 @@ import com.example.projeeeeeeeeeect.Models.PublishArticleResponse;
 import com.example.projeeeeeeeeeect.Models.Report;
 import com.example.projeeeeeeeeeect.Models.ReportStatusStat;
 import com.example.projeeeeeeeeeect.Models.ReportTypeStat;
-import com.example.projeeeeeeeeeect.Models.Resource;
 import com.example.projeeeeeeeeeect.Models.SendMessageRequest;
 import com.example.projeeeeeeeeeect.Models.SendMessageResponse;
 import com.example.projeeeeeeeeeect.Models.SubmitReportRequest;
 import com.example.projeeeeeeeeeect.Models.SubmitReportResponse;
 import com.example.projeeeeeeeeeect.Models.UserLoginRequest;
 import com.example.projeeeeeeeeeect.Models.UserLoginResponse;
-import com.example.projeeeeeeeeeect.Models.IncidentTypesResponse;
-import com.google.gson.annotations.SerializedName;
-import com.example.projeeeeeeeeeect.Models.AssignReportRequest;
-import com.example.projeeeeeeeeeect.Models.AssignReportResponse;
-import com.example.projeeeeeeeeeect.Models.CounsellorsResponse;
-import com.example.projeeeeeeeeeect.Models.SignUpRequest;
-import com.example.projeeeeeeeeeect.Models.SignUpResponse;
-import com.example.projeeeeeeeeeect.Models.ReportsResponse;
 
 import java.util.List;
 
@@ -34,8 +25,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Header;
-
 
 // --- Your API Interface (This part was already correct) ---
 public interface ApiService {
@@ -66,18 +55,8 @@ public interface ApiService {
     @GET("api/reports/status")
     Call<List<ReportStatusStat>> getReportsByStatus();
 
-    // 5. View Reports By Counsellor
-    @GET("api/reports/counsellor/{id}")
-    Call<List<Report>> getReportsByCounsellor(
-            @Header("Authorization") String authToken,
-            @Path("id") int counsellorId
-    );
-
-
-    @POST("api/articles") // <-- NEW ENDPOINT
+    @POST("api/resources") // <-- NEW ENDPOINT
     Call<PublishArticleResponse> publishResource(@Body PublishArticleRequest request);
-
-
 
     @POST("api/reports") // <-- NEW ENDPOINT: SUBMIT A REPORT
     Call<SubmitReportResponse> submitReport(@Body SubmitReportRequest request);
@@ -88,35 +67,4 @@ public interface ApiService {
     @POST("api/chat/send")
     Call<SendMessageResponse> sendMessage(@Body SendMessageRequest request);
 
-
-    @GET("api/reports/types")
-    Call<IncidentTypesResponse> getIncidentTypes();
-
-    @GET("api/reports")
-    Call<List<Report>> getReports();
-
-    @POST("api/reports/assign/{reportId}")
-    Call<AssignReportResponse> assignCounsellor(
-            @Path("reportId") int reportId,
-            @Body AssignReportRequest request
-    );
-
-    @GET("api/users/counsellors")
-    Call<CounsellorsResponse> getCounsellors();
-
-    @POST("api/auth")
-    Call<SignUpResponse>registerUser(@Body SignUpRequest request);
-
-    // <---RESOURCES--->
-    @GET("api/resources")
-    Call<List<Resource>> getAllResources();
-
-
 }
-
-//package com.example.projeeeeeeeeeect.Models;
-//import com.google.gson.annotations.SerializedName;
-//import java.util.List;
-
-
-

@@ -9,15 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.projeeeeeeeeeect.Models.SignUpRequest;
-import com.example.projeeeeeeeeeect.Models.SignUpResponse;
 import com.example.projeeeeeeeeeect.R;
-import com.example.projeeeeeeeeeect.network.ApiService;
-import com.example.projeeeeeeeeeect.network.RetrofitClient;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SignUp extends AppCompatActivity {
 
@@ -39,7 +31,7 @@ public class SignUp extends AppCompatActivity {
         backToLoginTextView = findViewById(R.id.backToLoginTextView);
 
         // Back to login link
-        backToLoginTextView.setOnClickListener(v -> finish());
+        backToLoginTextView.setOnClickListener(v -> finish()); // just closes this activity, returning to login
 
         // Sign Up button logic
         signUpButton.setOnClickListener(v -> {
@@ -60,27 +52,12 @@ public class SignUp extends AppCompatActivity {
                 return;
             }
 
-            // Send data to backend
-            SignUpRequest request = new SignUpRequest(email, password);
-            ApiService apiService = RetrofitClient.getApiService(this);
+            // Here you would normally create the user in your backend or local DB
+            // For now, just show success toast
+            Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show();
 
-            Call<SignUpResponse> call = apiService.registerUser(request);
-            call.enqueue(new Callback<SignUpResponse>() {
-                @Override
-                public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        Toast.makeText(SignUp.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
-                        finish(); // Go back to login
-                    } else {
-                        Toast.makeText(SignUp.this, "Sign-up failed: " + response.code(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<SignUpResponse> call, Throwable t) {
-                    Toast.makeText(SignUp.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            // Automatically go back to Login Screen
+            finish(); // closes SignUpActivity and returns to LoginActivity
         });
     }
 }

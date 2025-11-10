@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.projeeeeeeeeeect.Models.User; // <-- You may need to import your User model
 import com.example.projeeeeeeeeeect.Models.UserLoginRequest;
 import com.example.projeeeeeeeeeect.Models.UserLoginResponse;
 import com.example.projeeeeeeeeeect.admin.AdminDashboardActivity;
@@ -42,17 +41,15 @@ public class login extends AppCompatActivity {
         anonymousButton = findViewById(R.id.anonymousButton);
         signupLink = findViewById(R.id.signupLink);
 
-        // --- THIS IS THE CORRECTED CLICK LISTENER ---
+        // --- THIS IS THE NEW CLICK LISTENER ---
         loginButton.setOnClickListener(v -> {
             String email = emailInput.getText().toString().trim();
             String password = passwordInput.getText().toString();
 
-            // Create the request object
             UserLoginRequest loginRequest = new UserLoginRequest(email, password);
 
-            // Get the API service
+            // Pass the context (this) to getApiService
             ApiService apiService = RetrofitClient.getApiService(this);
-            // Create the network call
             Call<UserLoginResponse> call = apiService.loginUser(loginRequest);
 
             call.enqueue(new Callback<UserLoginResponse>() {
@@ -62,45 +59,30 @@ public class login extends AppCompatActivity {
                     if (response.isSuccessful() && response.body() != null) {
                         Toast.makeText(login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
-                        // --- SAVE SESSION DATA ---
+                        // --- SAVE THE TOKEN ---
+                        // Get token from response and save it
                         String token = response.body().getToken();
-                        User user = response.body().getUser();
-
                         if (token != null) {
                             sessionManager.saveAuthToken(token);
                         }
+                        // --- END SAVE TOKEN ---
 
-                        // Check if user object is not null before using it
-                        if (user != null) {
-                            // Assuming your User model has getUserId() and getRoleId()
-                            int roleId = user.getRoleId();
-                            int userId = user.getId(); // Make sure your User model has this method
+                        int roleId = response.body().getUser().role_id;;
 
-                            // Save user info to session
-                            sessionManager.saveUserId(userId);
-                            sessionManager.saveRoleId(roleId);
-
-                            // --- REDIRECT BASED ON ROLE ---
-                            // 3=Admin, 2=Counselor, 1=User (or default)
-                            switch (roleId) {
-                                case 3:
-                                    startActivity(new Intent(login.this, AdminDashboardActivity.class));
-                                    break;
-                                case 2: // Assuming 2 is for Counselor
-                                    startActivity(new Intent(login.this, CounsilorDashboard.class));
-                                    break;
-                                case 1: // Assuming 1 is for User
-                                default:
-                                    // Redirects to MainActivity for role 1
-                                    startActivity(new Intent(login.this, MainActivity.class));
-                                    break;
-                            }
-                            finish(); // Close the login activity
-
-                        } else {
-                            // Handle case where user object is null
-                            Toast.makeText(login.this, "Login successful, but user data is missing.", Toast.LENGTH_LONG).show();
+                        // 3=Admin, 2=Counselor, 1=User (or default)
+                        switch (roleId) {
+                            case 3:
+                                startActivity(new Intent(login.this, AdminDashboardActivity.class));
+                                break;
+                            case 2: // Assuming 2 is for Counselor
+                                startActivity(new Intent(login.this, CounsilorDashboard.class));
+                                break;
+                            case 1: // Assuming 1 is for User
+                            default:
+                                startActivity(new Intent(login.this, MainActivity.class));
+                                break;
                         }
+                        finish(); // Close the login activity
 
                     } else {
                         // API call was not successful (e.g., 401 Unauthorized, 404 Not Found)

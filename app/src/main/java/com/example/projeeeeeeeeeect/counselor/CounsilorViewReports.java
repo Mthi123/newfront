@@ -1,5 +1,6 @@
 package com.example.projeeeeeeeeeect.counselor;
 
+import android.content.Intent; // <--- ADDED IMPORT
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -8,7 +9,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.projeeeeeeeeeect.auth.SessionManager;
 import com.example.projeeeeeeeeeect.network.ApiService;
 import com.example.projeeeeeeeeeect.network.RetrofitClient;
 import com.example.projeeeeeeeeeect.R;
@@ -38,30 +38,30 @@ public class CounsilorViewReports extends AppCompatActivity {
 
         loadReports();
 
+        // --- UPDATED LOGIC: LAUNCH REPORT DETAIL ACTIVITY ---
         reportsListView.setOnItemClickListener((parent, view, position, id) -> {
             Report selectedReport = reportList.get(position);
-            // Use public getter methods now that models are separate classes
-            String incidentTypeName = (selectedReport.getIncidentType() != null) ? selectedReport.getIncidentType().getName() : "Unknown Type";
-            Toast.makeText(this, "Report ID: " + selectedReport.getId() + ", Type: " + incidentTypeName, Toast.LENGTH_LONG).show();
-            // TODO: Implement navigation to a detailed report view
+
+            // 1. Create the Intent to launch the detail screen
+            Intent intent = new Intent(this, ReportDetailActivity.class);
+
+            // 2. Pass the Report object. (Requires Report.java to be Serializable)
+            intent.putExtra(ReportDetailActivity.EXTRA_REPORT, selectedReport);
+
+            // 3. Start the new Activity
+            startActivity(intent);
         });
+        // ---------------------------------------------------
     }
 
     private void loadReports() {
-        SessionManager sessionManager = new SessionManager(this);
-        String token = "Bearer " + sessionManager.getAuthToken();
-        int counselorId = sessionManager.getUserId();// Ensure this returns the correct ID
-
-        if (token == null || counselorId == -1) {
-            Toast.makeText(this, "Session expired or invalid. Please log in again.", Toast.LENGTH_LONG).show();
-            return;
-        }
-
+        // 1. Get the API service client
         ApiService apiService = RetrofitClient.getApiService(this);
 
-        Call<List<Report>> call = apiService.getReportsByCounsellor(token, counselorId);
+        // 2. Prepare the API call for all reports
+        Call<List<Report>> call = apiService.getAllReports();
 
-
+        // 3. Execute the call asynchronously
         call.enqueue(new Callback<List<Report>>() {
             @Override
             public void onResponse(Call<List<Report>> call, Response<List<Report>> response) {
@@ -69,13 +69,15 @@ public class CounsilorViewReports extends AppCompatActivity {
                     reportList.clear();
                     reportList.addAll(response.body());
 
+                    // Prepare data for ArrayAdapter (string list for display)
                     List<String> displayReports = new ArrayList<>();
                     for (Report report : reportList) {
-                        String incidentTypeName = (report.getIncidentType() != null)
-                                ? report.getIncidentType().getName() : "Unknown Type";
+                        // Use public getter methods
+                        String incidentTypeName = (report.getIncidentType() != null) ? report.getIncidentType().getName() : "Unknown Type";
                         displayReports.add("ID: " + report.getId() + " | " + incidentTypeName + " | Loc: " + report.getLocation());
                     }
 
+                    // Update the ListView with fetched data
                     ArrayAdapter<String> adapter = new ArrayAdapter<>(
                             CounsilorViewReports.this,
                             android.R.layout.simple_list_item_1,
@@ -84,8 +86,10 @@ public class CounsilorViewReports extends AppCompatActivity {
                     reportsListView.setAdapter(adapter);
 
                     Toast.makeText(CounsilorViewReports.this, "Reports loaded successfully!", Toast.LENGTH_SHORT).show();
+
                 } else {
-                    Toast.makeText(CounsilorViewReports.this, "Failed to load reports. Code: " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(CounsilorViewReports.this, "Failed to load reports. Response code: " + response.code(), Toast.LENGTH_LONG).show();
+                    // Fallback to display empty list if API fails
                     reportsListView.setAdapter(new ArrayAdapter<>(CounsilorViewReports.this, android.R.layout.simple_list_item_1, new ArrayList<>()));
                 }
             }
@@ -93,6 +97,7 @@ public class CounsilorViewReports extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<Report>> call, Throwable t) {
                 Toast.makeText(CounsilorViewReports.this, "Network error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                // Fallback to display empty list if network fails
                 reportsListView.setAdapter(new ArrayAdapter<>(CounsilorViewReports.this, android.R.layout.simple_list_item_1, new ArrayList<>()));
             }
         });

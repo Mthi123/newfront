@@ -1,6 +1,8 @@
 package com.example.projeeeeeeeeeect.Models;
 
-public class StatusType {
+import java.io.Serializable;
+
+public class StatusType implements Serializable {
     int id;
     String name;
 

@@ -1,11 +1,12 @@
 package com.example.projeeeeeeeeeect.Models;
 
 import com.google.gson.annotations.SerializedName;
+import java.io.Serializable; // <-- ADDED IMPORT
 
 /**
  * Represents a single, full report object
  */
-public class Report {
+public class Report implements Serializable { // <-- ADDED 'implements Serializable'
     @SerializedName("id")
     int id;
 
@@ -35,9 +36,6 @@ public class Report {
 
     @SerializedName("StatusType")
     StatusType statusType;
-    @SerializedName("assigned_counsellor_id")
-    private int assignedCounsellorId;
-
 
     // --- CRITICAL FIX: GETTER METHODS ---
     public int getId() { return id; }
@@ -53,5 +51,4 @@ public class Report {
     public IncidentType getIncidentType() { return incidentType; }
 
     public StatusType getStatusType() { return statusType; }
-    public int getAssignedCounsellorId() { return assignedCounsellorId; }
 }
