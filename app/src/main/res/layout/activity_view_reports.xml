@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="Incident Type:"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"/>
             <TextView
                 android:id="@+id/tvIncidentType"
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/location_of_incident"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"/>
             <TextView
                 android:id="@+id/tvLocation"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/describe_what_happened"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"/>
             <TextView
                 android:id="@+id/tvDescription"
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/date_of_incident_optional"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"/>
             <TextView
                 android:id="@+id/tvDateOfIncident"
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:text="Report Filed On:"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"/>
             <TextView
                 android:id="@+id/tvDateReported"
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:text="Current Status:"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:layout_marginTop="8dp"/>
             <TextView
                 android:id="@+id/tvStatus"
@@ -164,8 +164,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/chat_with_users"
-                android:backgroundTint="@color/colorAccent"
-                android:textColor="@android:color/white"
+                android:background="@drawable/button_rounded_primary"
+                android:textColor="@android:color/black"
                 android:layout_marginTop="16dp" />
 
         </LinearLayout>

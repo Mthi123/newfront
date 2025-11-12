@@ -2,12 +2,12 @@
     <string name="app_name">PROJEEEEEEEEEECT</string>
     <string name="app_logo">App Logo</string>
     <string name="hu_xing">Hu Xing</string>
-    <string name="username">username</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="continue_as_anonymous">Continue as Anonymous</string>
     <string name="don_t_have_an_account_sign_up">Don’t have an account? Sign up</string>
-    <string name="guard_your_journey_fearless_at_every_step">Guard your journey,fearless at every step</string>
+    <string name="guard_your_journey_fearless_at_every_step">Guard your journey, fearless at every step</string>
     <string name="help_title">How to Use the App</string>
     <string name="help_dialog_ok">Got It</string>
     <string name="help_step1_title">1. Registration and Login</string>

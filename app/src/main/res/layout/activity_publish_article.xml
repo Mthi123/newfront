@@ -39,7 +39,7 @@
                 android:text="@string/publish_resource"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_marginBottom="16dp"/>
 
             <EditText
@@ -64,6 +64,7 @@
                 android:id="@+id/publishBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_rounded_primary"
                 android:backgroundTint="@color/soft_pink_dark"
                 android:text="@string/publish"/>
         </LinearLayout>

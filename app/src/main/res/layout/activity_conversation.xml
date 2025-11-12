@@ -54,6 +54,7 @@
             <Button
                 android:id="@+id/btnSend"
                 android:layout_width="wrap_content"
+                android:background="@drawable/button_rounded_secondary"
                 android:layout_height="wrap_content"
                 android:text="@string/send" />
         </LinearLayout>

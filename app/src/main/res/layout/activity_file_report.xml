@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/file_report"
-            android:textSize="22sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
@@ -83,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/submit_report"
+            android:background="@drawable/button_rounded_primary"
             android:backgroundTint="@color/soft_pink_dark"
             android:textColor="@android:color/black"
             android:layout_marginTop="16dp" />
@@ -91,10 +92,11 @@
             android:id="@+id/btnCancelReport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/cancel"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_rounded_primary"
             android:backgroundTint="@color/soft_pink_dark"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="8dp" />
+            android:text="@string/cancel"
+            android:textColor="@android:color/black" />
 
     </LinearLayout>
 </ScrollView>

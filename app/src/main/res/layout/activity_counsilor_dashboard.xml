@@ -44,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/view_user_reports"
+            android:background="@drawable/button_rounded_primary"
             android:backgroundTint="@color/soft_pink_dark"
             android:layout_marginBottom="16dp" />
 
@@ -52,6 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/chat_with_users"
+            android:background="@drawable/button_rounded_primary"
             android:backgroundTint="@color/soft_pink_dark"
             android:layout_marginBottom="16dp" />
 
@@ -59,6 +61,7 @@
             android:id="@+id/publishResourceBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/button_rounded_primary"
             android:text="@string/publish_resource"
             android:backgroundTint="@color/soft_pink_dark"
             android:layout_marginBottom="16dp" />

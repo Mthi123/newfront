@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:layout_marginBottom="8dp"
-    android:background="@android:color/white">
+
+    android:background="@drawable/back">
 
     <TextView
         android:id="@+id/resourceName"
@@ -22,14 +22,16 @@
         android:layout_height="wrap_content"
         android:text="Resource Type"
         android:textSize="14sp"
-        android:textStyle="italic"/>
+        android:textStyle="italic"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/resourceDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Description..."
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/resourcePhone"
@@ -37,27 +39,31 @@
         android:layout_height="wrap_content"
         android:text="Phone: N/A"
         android:layout_marginTop="8dp"
-        android:autoLink="phone"/>
+        android:autoLink="phone"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/resourceEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email: N/A"
-        android:autoLink="email"/>
+        android:autoLink="email"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/resourceWebsite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Website: N/A"
-        android:autoLink="web"/>
+        android:autoLink="web"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/resourceAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address: N/A"
-        android:autoLink="map"/>
+        android:autoLink="map"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>
