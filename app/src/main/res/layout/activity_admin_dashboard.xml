@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/report_statistics"
-                    android:backgroundTint="@color/soft_pink_dark"
+                    android:backgroundTint="@color/colorPrimary"
                     android:background="@drawable/button_rounded_primary"
                     android:layout_marginBottom="16dp" />
 
@@ -71,7 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/view_resources"
-                    android:backgroundTint="@color/soft_pink_dark"
+                    android:backgroundTint="@color/colorPrimary"
                     android:background="@drawable/button_rounded_primary"
                     android:layout_marginBottom="16dp" />
 

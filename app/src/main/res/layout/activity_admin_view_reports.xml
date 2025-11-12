@@ -15,8 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/background_image" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <View
         android:layout_width="0dp"
@@ -52,10 +51,8 @@
             android:id="@+id/recyclerReports"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            tools:listitem="@layout/report_list_item" />
+            android:paddingStart="0dp"  android:paddingEnd="0dp"
+            android:clipToPadding="false" tools:listitem="@layout/report_list_item" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

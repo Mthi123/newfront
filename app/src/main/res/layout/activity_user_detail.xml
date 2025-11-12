@@ -112,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Update User Details"
-            android:background="@drawable/button_rounded_secondary"
+            android:background="@drawable/button_rounded_primary"
             android:textColor="@android:color/black"
             android:layout_marginBottom="12dp" />
 

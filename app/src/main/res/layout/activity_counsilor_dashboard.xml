@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".counselor.CounsilorDashboard">
 
-    <!-- Background Image -->
     <ImageView
-        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/back"
         android:contentDescription="@string/background_image" />
 
-    <!-- Dark overlay for readability -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80000000" /> <!-- 50% black tint -->
+        android:background="#80000000" />
 
     <LinearLayout
         android:id="@+id/main"
@@ -28,7 +26,6 @@
         android:padding="24dp"
         android:gravity="center">
 
-
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
@@ -37,34 +34,79 @@
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:layout_marginBottom="32dp" />
+            android:layout_marginBottom="48dp" />
 
-        <Button
-            android:id="@+id/viewReportsBtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/view_user_reports"
-            android:background="@drawable/button_rounded_primary"
-            android:backgroundTint="@color/soft_pink_dark"
-            android:layout_marginBottom="16dp" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/chatWithUsersBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/chat_with_users"
-            android:background="@drawable/button_rounded_primary"
-            android:backgroundTint="@color/soft_pink_dark"
-            android:layout_marginBottom="16dp" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/colorPrimary">
 
-        <Button
-            android:id="@+id/publishResourceBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_rounded_primary"
-            android:text="@string/publish_resource"
-            android:backgroundTint="@color/soft_pink_dark"
-            android:layout_marginBottom="16dp" />
+                <Button
+                    android:id="@+id/viewReportsBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/view_user_reports"
+                    android:textColor="@android:color/white"
+                    android:paddingVertical="18dp"
+                    android:paddingStart="16dp"
+                    android:drawableTint="@android:color/white"
+                    android:gravity="left|center_vertical"
+                    android:textSize="14sp" />
+            </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <Button
+                    android:id="@+id/chatWithUsersBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chat_with_users"
+                    android:textColor="@android:color/black"
+                    android:paddingVertical="18dp"
+                    android:paddingStart="16dp"
+                    android:drawableTint="@color/colorPrimary"
+                    android:gravity="left|center_vertical"
+                    android:textSize="14sp"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/colorPrimary">
+
+                <Button
+                    android:id="@+id/publishResourceBtn"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/publish_resource"
+                    android:textColor="@android:color/white"
+                    android:paddingVertical="18dp"
+                    android:paddingStart="16dp"
+                    android:drawableTint="@android:color/white"
+                    android:gravity="left|center_vertical"
+                    android:textSize="14sp"/>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

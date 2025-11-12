@@ -66,8 +66,8 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_reports"
-                        android:tint="@android:color/white"
-                        android:contentDescription="Reports Icon" />
+                        android:contentDescription="Reports Icon"
+                        app:tint="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -75,7 +75,6 @@
                         android:text="Reports"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="8dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -102,8 +101,8 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_resources"
-                        android:tint="@color/colorPrimary"
-                        android:contentDescription="Resources Icon" />
+                        android:contentDescription="Resources Icon"
+                        app:tint="@color/colorPrimary" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -111,7 +110,6 @@
                         android:text="Resources"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="8dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -138,8 +136,8 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_messages"
-                        android:tint="@color/colorPrimary"
-                        android:contentDescription="Messages Icon" />
+                        android:contentDescription="Messages Icon"
+                        app:tint="@color/colorPrimary" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -147,7 +145,6 @@
                         android:text="Messages"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="8dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -174,8 +171,8 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_news"
-                        android:tint="@android:color/white"
-                        android:contentDescription="News Icon" />
+                        android:contentDescription="News Icon"
+                        app:tint="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -183,7 +180,6 @@
                         android:text="News"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         android:layout_marginTop="8dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

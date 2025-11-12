@@ -115,8 +115,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/submit_report"
                 android:background="@drawable/button_rounded_primary"
-                android:backgroundTint="@color/soft_pink_dark"
-                android:textColor="@android:color/black"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@android:color/white"
                 android:layout_marginTop="16dp" />
 
             <Button

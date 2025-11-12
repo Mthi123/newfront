@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:text="View All Reports"
                 android:background="@drawable/button_rounded_primary"
-                android:backgroundTint="@color/soft_pink_dark"
+                android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/black"
                 android:layout_marginBottom="16dp"/>
 
@@ -60,8 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="View Reports by Type"
-                android:backgroundTint="@color/soft_pink_dark"
                 android:background="@drawable/button_rounded_primary"
+                android:backgroundTint="@color/soft_pink_dark"
                 android:textColor="@color/black"
                 android:layout_marginBottom="16dp"/>
 
@@ -71,8 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="View Reports by Location"
-                android:backgroundTint="@color/soft_pink_dark"
-                android:background="@drawable/button_rounded_primary"
+                android:backgroundTint="@color/colorPrimary"
+                android:background="@drawable/button_rounded_secondary"
                 android:textColor="@color/black"
                 android:layout_marginBottom="16dp"/>
 
