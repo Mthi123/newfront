@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PROJEK</string>
+    <string name="username">Gebruikernaam</string>
+    <string name="password">Wagwoord</string>
+    <string name="login">Aanmeld</string>
+    <string name="continue_as_anonymous">Gaan voort as anoniem</string>
+    <string name="don_t_have_an_account_sign_up">Het jy nie n rekening nie? Registreer</string>
+    <string name="guard_your_journey_fearless_at_every_step">Beskerm jou reis, vreesloos met elke stap</string>
+
+    <string name="lang_button_text">AF</string>
+
+    <string name="help_title">Hoe om die App te Gebruik</string>
+    <string name="help_dialog_ok">Verstaan</string>
+    <string name="help_step1_title">1. Registrasie en Aanmeld</string>
+    <string name="help_step1_details">As jy n eerstekeer gebruiker is, kies Registreer om n rekening te skep. Bestaande gebruikers kan hul geloofsbriewe hier invoer.</string>
+    <string name="help_step2_title">2. Anonieme Toegang</string>
+    <string name="help_step2_details">Kies Gaan voort as Anoniem om bronne te blaai sonder om n rekening te skep. Anonieme aktiwiteit word NIE gestoor of opgespoor nie.</string>
+    <string name="help_step3_title">3. Na-Aanmeldings Dashboard</string>
+    <string name="help_step3_details">Jou toegang en funksies (Verslae, Berading, Admin Gereedskap) hang af van jou rekeningrol (Gebruiker, Berader, of Admin).</string>
+    <string name="help_step4_title">4. Nood SOS en Verslaggewing</string>
+    <string name="help_step4_details">Die hoof dashboard sluit kritiese funksies soos die SOS-knoppie en die vermoë om n gedetailleerde verslag in te dien in.</string>
+    <string name="help_step5_title">5. Verandering van Tale</string>
+    <string name="help_step5_details">Tik die taal-knoppie (bv. EN, AF, XH) in die boonste hoek om die app se taal onmiddellik te verander.</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IPROJEKTHI</string>
+    <string name="username">Igama lomsebenzisi</string>
+    <string name="password">Inombolo yokuvula</string>
+    <string name="login">Ngema</string>
+    <string name="continue_as_anonymous">Qhubeka ungaziwa</string>
+    <string name="don_t_have_an_account_sign_up">Awunayo iakhawunti? Bhalisa</string>
+    <string name="guard_your_journey_fearless_at_every_step">Khusela uhambo lwakho, ungaloyiki nanini na</string>
+
+    <string name="lang_button_text">XH</string>
+
+    <string name="help_title">Indlela Yokusebenzisa i-App</string>
+    <string name="help_dialog_ok">Ndiqondile</string>
+    <string name="help_step1_title">1. Ubhaliso kunye nokuNgema</string>
+    <string name="help_step1_details">Ukuba ungumsebenzisi omtsha, khetha Bhalisa ukwenza iakhawunti. Abasebenzisi abakhoyo banokufaka iinkcukacha zabo apha.</string>
+    <string name="help_step2_title">2. Ukungena Ungaziwa</string>
+    <string name="help_step2_details">Khetha Qhubeka ungaziwa ukuze ukhangele izixhobo ngaphandle kokwenza iakhawunti. Umsebenzi ongaziwayo AKUTHENDELEKWANGA okanye ulandelwe.</string>
+    <string name="help_step3_title">3. IDeshibhodi Emva kokungena</string>
+    <string name="help_step3_details">Ukufikelela kwakho kunye neempawu (Iingxelo, Ukucebisa, Izixhobo zoMlawuli) kuxhomekeke kwindima yeakhawunti yakho (Umsebenzisi, Umcebisi, okanye Umlawuli).</string>
+    <string name="help_step4_title">4. I-SOS Engxamisekileyo kunye Nengxelo</string>
+    <string name="help_step4_details">Ideshibhodi engundoqo ibandakanya imisebenzi ebalulekileyo efana neqhosha le-SOS kunye nokukwazi ukwenza ingxelo eneenkcukacha.</string>
+    <string name="help_step5_title">5. Ukutshintsha Iilwimi</string>
+    <string name="help_step5_details">Cofa iqhosha lolwimi (umz. EN, AF, XH) kwikona ephezulu ukuze utshintshe ngokukhawuleza ulwimi lwe-app.</string>
+</resources>

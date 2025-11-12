@@ -2,11 +2,16 @@ package com.example.projeeeeeeeeeect;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View; // NEW: Needed for the onClick method
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import android.content.res.Configuration;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,12 +28,13 @@ import com.example.projeeeeeeeeeect.auth.SessionManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-// NEW IMPORTS FOR HELP DIALOG
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 public class login extends AppCompatActivity {
+    // Class variables for language switching
+    private final List<String> supportedLocales = Arrays.asList("en", "af", "xh");
+    private int currentLocaleIndex = 0;
 
     EditText emailInput, passwordInput;
     Button loginButton, anonymousButton;
@@ -37,9 +43,21 @@ public class login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // --- NEW: LANGUAGE SETUP ---
+        // Must set the locale BEFORE super.onCreate() and setContentView()
+        setAppLocale(getCurrentLanguageCode());
+        // ---------------------------
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         sessionManager = new SessionManager(this);
+
+        // Find and set initial language index based on the current locale
+        String currentCode = getCurrentLanguageCode();
+        currentLocaleIndex = supportedLocales.indexOf(currentCode);
+        if (currentLocaleIndex == -1) {
+            currentLocaleIndex = 0; // Default to English if not found
+        }
 
         emailInput = findViewById(R.id.emailInput);
         passwordInput = findViewById(R.id.passwordInput);
@@ -47,16 +65,18 @@ public class login extends AppCompatActivity {
         anonymousButton = findViewById(R.id.anonymousButton);
         signupLink = findViewById(R.id.signupLink);
 
+        // --- NEW: UPDATE LANGUAGE BUTTON TEXT ---
+        updateLangButtonText();
+        // ----------------------------------------
+
+
         // --- Existing Login Button Logic ---
         loginButton.setOnClickListener(v -> {
-            // ... (Your existing login logic here) ...
             String email = emailInput.getText().toString().trim();
             String password = passwordInput.getText().toString();
-            // Create the request object
+
             UserLoginRequest loginRequest = new UserLoginRequest(email, password);
-            // Get the API service
             ApiService apiService = RetrofitClient.getApiService(this);
-            // Create the network call
             Call<UserLoginResponse> call = apiService.loginUser(loginRequest);
 
             call.enqueue(new Callback<UserLoginResponse>() {
@@ -64,6 +84,7 @@ public class login extends AppCompatActivity {
                 public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         Toast.makeText(login.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+
                         String token = response.body().getToken();
                         User user = response.body().getUser();
 
@@ -106,6 +127,7 @@ public class login extends AppCompatActivity {
             });
         });
 
+
         // Anonymous login (no change needed)
         anonymousButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
@@ -117,20 +139,13 @@ public class login extends AppCompatActivity {
         signupLink.setOnClickListener(v -> {
             startActivity(new Intent(this, SignUp.class));
         });
+
     }
 
-    // ===================================
-    // NEW HELP BUTTON METHOD
-    // ===================================
-
-    /**
-     * Shows a dialog box with help information when the help button is clicked.
-     * Must be public and accept a View parameter because it's linked via android:onClick in XML.
-     */
+    // --- Existing Help Button Method ---
     public void onHelpButtonClick(View view) {
-        // Concatenate the strings defined in values/strings.xml
         String helpContent =
-                getString(R.string.help_step1_title) + "\n" + getString(R.string.help_step1_details) + "\n\n" +
+                getString(R.string.help_step1_title) + "\n" + getString(R.string.help_step1_details)+ "\n\n" +
                         getString(R.string.help_step2_title) + "\n" + getString(R.string.help_step2_details) + "\n\n" +
                         getString(R.string.help_step3_title) + "\n" + getString(R.string.help_step3_details) + "\n\n" +
                         getString(R.string.help_step4_title) + "\n" + getString(R.string.help_step4_details) + "\n\n" +
@@ -146,5 +161,57 @@ public class login extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+
+    // ===================================
+    // NEW LANGUAGE BUTTON METHODS
+    // ===================================
+
+    /**
+     * Handles the click event for the language button, cycling the locale.
+     * Must be public and accept a View parameter (linked via android:onClick in XML).
+     */
+    public void onLangButtonClick(View view) {
+        // Move to the next locale in the list (cycles back to 0)
+        currentLocaleIndex = (currentLocaleIndex + 1) % supportedLocales.size();
+        String newLocaleCode = supportedLocales.get(currentLocaleIndex);
+
+        setAppLocale(newLocaleCode);
+
+        // Recreate the activity to apply the language change instantly
+        recreate();
+    }
+
+    /**
+     * Utility function to set the application language
+     */
+    private void setAppLocale(String localeCode) {
+        Locale locale = new Locale(localeCode);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+
+        // Update configuration for the base context
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+    }
+
+    /**
+     * Utility function to get the current language code from resources
+     */
+    private String getCurrentLanguageCode() {
+        // Get the primary locale from the system's configuration
+        return getResources().getConfiguration().getLocales().get(0).getLanguage();
+    }
+
+    /**
+     * Finds the button and sets its text using the current locale's string resource
+     */
+    private void updateLangButtonText() {
+        Button langButton = findViewById(R.id.lang_button);
+        // You must have a Button with id 'lang_button' in your activity_login.xml
+        if (langButton != null) {
+            langButton.setText(getString(R.string.lang_button_text));
+        }
     }
 }

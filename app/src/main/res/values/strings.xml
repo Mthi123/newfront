@@ -58,6 +58,7 @@
     <string name="view_resources">View Resources</string>
     <string name="background_image">Background Image</string>
     <string name="articles">Articles</string>
+    <string name="lang_button_text">EN</string>
     <string-array name="user_roles">
         <item>User</item>
         <item>Counselor</item>
