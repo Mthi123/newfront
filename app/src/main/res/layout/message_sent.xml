@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="end"                 android:paddingStart="64dp"           android:paddingEnd="8dp"              android:paddingTop="4dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="end"
+    android:paddingStart="64dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="4dp"
     android:paddingBottom="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,14 +18,20 @@
             android:id="@+id/text_message_body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_message_sent" android:textColor="@android:color/white"     android:paddingStart="12dp"
+
+            android:background="@drawable/bg_message_sent"
+            android:textColor="@android:color/white"
+
+            android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:textSize="16sp"
             android:maxWidth="280dp"
-            app:layout_constraintEnd_toEndOf="parent"    app:layout_constraintTop_toTopOf="parent"
-            android:elevation="1dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="1dp"
+            tools:text="This is a message sent by the user."/>
 
         <TextView
             android:id="@+id/text_message_time"
@@ -32,7 +42,8 @@
             android:textColor="#BBBBBB"
             android:layout_marginTop="2dp"
             android:layout_marginStart="4dp"
-            app:layout_constraintStart_toStartOf="@id/text_message_body" app:layout_constraintTop_toBottomOf="@id/text_message_body" />
+            app:layout_constraintStart_toStartOf="@id/text_message_body"
+            app:layout_constraintTop_toBottomOf="@id/text_message_body" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
