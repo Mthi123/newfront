@@ -52,7 +52,7 @@ public interface ApiService {
 
     // 1. View all reports
     @GET("api/reports")
-    Call<List<Report>> getAllReports();
+    Call<List<Report>> getAllReports(@Header("Authorization") String authToken);
 
     // 2. View reports by type
     @GET("api/reports/type")

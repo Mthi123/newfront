@@ -15,27 +15,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PROJEEEEEEEEEECT"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:name="GbvApp">
         <activity
             android:name=".admin.UserDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".admin.AdminViewUsersActivity"
-            android:exported="false" />
-        <activity
-            android:name=".admin.AdminManageCounselorsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".admin.AdminDashboardActivity"
             android:exported="false" />
         <activity
             android:name=".admin.mainbtns.AdminViewUsersActivity"
             android:exported="false" />
         <activity
+            android:name=".admin.mainbtns.AdminManageCounselorsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminDashboardActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.mainbtns.AdminReportStatsActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.mainbtns.AdminManageCounselorsActivity"
+            android:name=".admin.mainbtns.specbtns.AssignCounsellorToReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.mainbtns.specbtns.AdminViewReportsActivity"
             android:exported="false" />
         <activity
             android:name=".counselor.PublishArticle"

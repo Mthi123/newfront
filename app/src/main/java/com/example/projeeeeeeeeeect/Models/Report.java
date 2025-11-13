@@ -48,8 +48,6 @@ public class Report {
     public String getLocation() { return location; }
     public int getIncidentTypeId() { return incidentTypeId; }
     public int getStatusId() { return statusId; }
-
-    // THIS METHOD WAS MISSING/INCORRECTLY REFERENCED, CAUSING THE ERROR
     public IncidentType getIncidentType() { return incidentType; }
 
     public StatusType getStatusType() { return statusType; }
