@@ -7,6 +7,11 @@ android {
     namespace = "com.example.projeeeeeeeeeect"
     compileSdk = 36
 
+
+        buildFeatures {
+            viewBinding = true
+        }
+
     defaultConfig {
         applicationId = "com.example.projeeeeeeeeeect"
         minSdk = 30
@@ -45,15 +50,16 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.android.material:material:1.11.0")
-    implementation("io.getstream:stream-chat-android-client:6.27.0")
+    implementation("io.getstream:stream-chat-android-client:6.24.0")
     implementation("io.getstream:stream-chat-android-state:6.27.0")
-    implementation("io.getstream:stream-chat-android-offline:6.27.0")
+    implementation("io.getstream:stream-chat-android-offline:6.24.0")
     implementation ("io.getstream:stream-chat-android-ui-components:6.27.0")
-    implementation ("io.getstream:stream-chat-android-compose:6.27.0")
+    //implementation ("io.getstream:stream-chat-android-compose:6.27.0")
     //implementation ("stream-chat-android-markdown-transformer:6.27.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
     implementation(libs.core.ktx)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

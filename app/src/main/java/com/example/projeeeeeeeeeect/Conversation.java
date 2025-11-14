@@ -1,70 +1,83 @@
-package com.example.projeeeeeeeeeect;
-
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.projeeeeeeeeeect.Adapters.ChatAdapter;
-import com.example.projeeeeeeeeeect.Models.Message;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class Conversation extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    private EditText etMessage;
-    private Button btnSend;
-    private ChatAdapter chatAdapter;
-    private List<Message> messageList;
-    private String counselorName;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conversation);
-
-        recyclerView = findViewById(R.id.recyclerChat);
-        etMessage = findViewById(R.id.etMessage);
-        btnSend = findViewById(R.id.btnSend);
-
-        counselorName = getIntent().getStringExtra("counselorName");
-        setTitle("Chat with " + counselorName);
-
-        messageList = new ArrayList<>();
-        chatAdapter = new ChatAdapter(messageList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(chatAdapter);
-
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String messageText = etMessage.getText().toString().trim();
-
-                if (TextUtils.isEmpty(messageText)) {
-                    return;
-                }
-
-                messageList.add(new Message(messageText, true, System.currentTimeMillis()));
-                chatAdapter.notifyItemInserted(messageList.size() - 1);
-                recyclerView.scrollToPosition(messageList.size() - 1);
-                etMessage.setText("");
-
-
-                messageList.add(new Message("Thank you for reaching out. I’m here to listen.", false, System.currentTimeMillis()));
-                chatAdapter.notifyItemInserted(messageList.size() - 1);
-                recyclerView.scrollToPosition(messageList.size() - 1);
-            }
-        });
-
-    }}
+//package com.example.projeeeeeeeeeect;
+//
+//import android.os.Bundle;
+//import android.util.Log;
+//
+//import androidx.appcompat.app.AppCompatActivity;
+//import androidx.lifecycle.ViewModelProvider;
+//
+//import com.example.projeeeeeeeeeect.databinding.ActivityConversationBinding;
+//
+//import io.getstream.chat.android.client.ChatClient;
+//import io.getstream.chat.android.models.Channel;
+//import io.getstream.chat.android.models.Member;
+//import io.getstream.chat.android.models.User;
+//
+//import io.getstream.chat.android.ui.feature.messages.list.MessageListView;
+//import io.getstream.chat.android.ui.feature.messages.header.MessageListHeaderView;
+//import io.getstream.chat.android.ui.feature.messages.composer.MessageComposerView;
+//
+//import io.getstream.chat.android.ui.viewmodel.messages.MessageListHeaderViewModel;
+//import io.getstream.chat.android.ui.viewmodel.messages.MessageListViewModel;
+//import io.getstream.chat.android.ui.viewmodel.messages.MessageComposerViewModel;
+//import io.getstream.chat.android.ui.viewmodel.messages.MessageListViewModelFactory;
+//
+//public class Conversation extends AppCompatActivity {
+//
+//    private ActivityConversationBinding binding;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        binding = ActivityConversationBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//
+//        // --- 1️⃣ Get channel ID from backend/API ---
+//        String cid = getIntent().getStringExtra("channelId");
+//        if (cid == null || cid.isEmpty()) {
+//            Log.e("ConversationActivity", "Channel ID missing, finishing");
+//            finish();
+//            return;
+//        }
+//
+//        // --- 2️⃣ Create unified factory ---
+//        MessageListViewModelFactory factory = new MessageListViewModelFactory(this, cid);
+//
+//        // --- 3️⃣ Get ViewModels ---
+//        ViewModelProvider provider = new ViewModelProvider(this, factory);
+//        MessageListHeaderViewModel headerViewModel = provider.get(MessageListHeaderViewModel.class);
+//        MessageListViewModel listViewModel = provider.get(MessageListViewModel.class);
+//        MessageComposerViewModel composerViewModel = provider.get(MessageComposerViewModel.class);
+//
+//        // --- HEADER ---
+//        headerViewModel.getChannel().observe(this, channel -> {
+//            if (channel != null) {
+//                binding.messageListHeaderView.setTitle(getChannelName(channel));
+//                binding.messageListHeaderView.setAvatar(channel);
+//            }
+//        });
+//
+//        // --- MESSAGE LIST ---
+//        // MessageListView observes the ViewModel internally, so no manual updates required
+//        listViewModel.getState().observe(this, state -> {
+//            if (state instanceof MessageListViewModel.State.Result) {
+//                // Optional: additional UI handling if needed
+//            }
+//        });
+//
+//    }
+//
+//    // Helper method to generate a channel title
+//    private String getChannelName(Channel channel) {
+//        User currentUser = ChatClient.instance().getCurrentUser();
+//        if (currentUser == null) return "Chat";
+//
+//        for (Member member : channel.getMembers()) {
+//            if (!member.getUserId().equals(currentUser.getId())) {
+//                return "Chat with " + member.getUserId();
+//            }
+//        }
+//        return "Chat";
+//    }
+//}

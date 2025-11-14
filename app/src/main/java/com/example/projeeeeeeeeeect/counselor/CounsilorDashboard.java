@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.projeeeeeeeeeect.Conversation;
+//import com.example.projeeeeeeeeeect.Conversation;
 import com.example.projeeeeeeeeeect.R;
 
 public class CounsilorDashboard extends AppCompatActivity {
@@ -29,11 +29,11 @@ public class CounsilorDashboard extends AppCompatActivity {
         });
 
         // Chat with users (shared ConversationActivity)
-        chatWithUsersBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Conversation.class);
-            intent.putExtra("role", "counselor"); // Pass role so ConversationActivity knows sender type
-            startActivity(intent);
-        });
+        //chatWithUsersBtn.setOnClickListener(v -> {
+//            Intent intent = new Intent(this, Conversation.class);
+//            intent.putExtra("role", "counselor"); // Pass role so ConversationActivity knows sender type
+//            startActivity(intent);
+//        });
 
         // Publish resources/articles for users
         publishResourceBtn.setOnClickListener(v -> {

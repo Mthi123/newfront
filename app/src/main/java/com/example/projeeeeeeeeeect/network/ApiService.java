@@ -12,20 +12,16 @@ import com.example.projeeeeeeeeeect.Models.Report;
 import com.example.projeeeeeeeeeect.Models.ReportStatusStat;
 import com.example.projeeeeeeeeeect.Models.ReportTypeStat;
 import com.example.projeeeeeeeeeect.Models.Resource;
-import com.example.projeeeeeeeeeect.Models.SendMessageRequest;
-import com.example.projeeeeeeeeeect.Models.SendMessageResponse;
 import com.example.projeeeeeeeeeect.Models.SubmitReportRequest;
 import com.example.projeeeeeeeeeect.Models.SubmitReportResponse;
 import com.example.projeeeeeeeeeect.Models.UserLoginRequest;
 import com.example.projeeeeeeeeeect.Models.UserLoginResponse;
 import com.example.projeeeeeeeeeect.Models.IncidentTypesResponse;
-import com.google.gson.annotations.SerializedName;
 import com.example.projeeeeeeeeeect.Models.AssignReportRequest;
 import com.example.projeeeeeeeeeect.Models.AssignReportResponse;
 import com.example.projeeeeeeeeeect.Models.CounsellorsResponse;
 import com.example.projeeeeeeeeeect.Models.SignUpRequest;
 import com.example.projeeeeeeeeeect.Models.SignUpResponse;
-import com.example.projeeeeeeeeeect.Models.ReportsResponse;
 
 import java.util.List;
 
@@ -72,22 +68,13 @@ public interface ApiService {
             @Header("Authorization") String authToken,
             @Path("id") int counsellorId
     );
-
-
     @POST("api/articles") // <-- NEW ENDPOINT
     Call<PublishArticleResponse> publishResource(@Body PublishArticleRequest request);
-
-
-
     @POST("api/reports") // <-- NEW ENDPOINT: SUBMIT A REPORT
     Call<SubmitReportResponse> submitReport(@Body SubmitReportRequest request);
 
     @POST("api/chat/start")
     Call<ChatStartResponse> startChat(@Body ChatStartRequest request);
-
-    @POST("api/chat/send")
-    Call<SendMessageResponse> sendMessage(@Body SendMessageRequest request);
-
 
     @GET("api/reports/types")
     Call<IncidentTypesResponse> getIncidentTypes();
@@ -111,12 +98,7 @@ public interface ApiService {
     @GET("api/resources")
     Call<List<Resource>> getAllResources();
 
-
 }
-
-//package com.example.projeeeeeeeeeect.Models;
-//import com.google.gson.annotations.SerializedName;
-//import java.util.List;
 
 
 

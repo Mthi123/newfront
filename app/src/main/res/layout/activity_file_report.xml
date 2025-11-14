@@ -36,22 +36,24 @@
                 android:textSize="32sp" android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="32dp" /> <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/type_of_incident_e_g_harassment_assault"
-            app:boxStrokeColor="@android:color/white"
-            app:hintTextColor="@android:color/white"
-            android:textColorHint="#CCCCCC"
-            android:layout_marginBottom="16dp">
+                android:layout_marginBottom="32dp" />
 
-            <Spinner
-                android:id="@+id/etIncidentType"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="@string/type_of_incident_e_g_harassment_assault"
+                app:boxStrokeColor="@android:color/white"
+                app:hintTextColor="@android:color/white"
+                android:textColorHint="#CCCCCC"
+                android:layout_marginBottom="16dp">
+
+                <Spinner
+                    android:id="@+id/etIncidentType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -71,6 +73,13 @@
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <fragment
+                android:id="@+id/mapFragment"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -89,7 +98,6 @@
                     android:gravity="top"
                     android:inputType="textMultiLine" />
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -125,6 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@android:color/transparent" android:text="@string/cancel"
-                android:textColor="@android:color/white" /> </LinearLayout>
+                android:textColor="@android:color/white" />
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>
