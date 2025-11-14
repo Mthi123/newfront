@@ -24,6 +24,9 @@
             android:name=".admin.mainbtns.AdminViewUsersActivity"
             android:exported="false" />
         <activity
+            android:name=".admin.mainbtns.specbtns.AdminViewReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".admin.mainbtns.AdminManageCounselorsActivity"
             android:exported="false" />
         <activity
@@ -36,7 +39,19 @@
             android:name=".admin.mainbtns.specbtns.AssignCounsellorToReportActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.mainbtns.specbtns.AdminViewReportsActivity"
+            android:name=".admin.mainbtns.specbtns.AdminReportDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.mainbtns.specbtns.AdminReportsByLocationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.mainbtns.specbtns.AdminReportsByStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.mainbtns.specbtns.AdminReportsByTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".counselor.ReportDetailActivity"
             android:exported="false" />
         <activity
             android:name=".counselor.PublishArticle"
@@ -48,7 +63,7 @@
             android:name=".counselor.CounsilorDashboard"
             android:exported="false" />
         <activity
-            android:name=".Conversation"
+            android:name=".ConversationActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -19,4 +19,16 @@ public class ReportTypeStat {
 
     @SerializedName("IncidentType.name")
     String nestedName;
+
+    public int getCount() {
+        return count;
+    }
+
+    public String getNestedName(){
+        return nestedName;
+    }
+
+    public String getIncidentType(){
+        return incidentType;
+    }
 }

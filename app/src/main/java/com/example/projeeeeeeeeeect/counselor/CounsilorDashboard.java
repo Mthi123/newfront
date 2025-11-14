@@ -6,7 +6,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//import com.example.projeeeeeeeeeect.Conversation;
+import com.example.projeeeeeeeeeect.ChatListActivity;
+import com.example.projeeeeeeeeeect.ConversationActivity; // Import the Kotlin activity
 import com.example.projeeeeeeeeeect.R;
 
 public class CounsilorDashboard extends AppCompatActivity {
@@ -28,12 +29,14 @@ public class CounsilorDashboard extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Chat with users (shared ConversationActivity)
-        //chatWithUsersBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(this, Conversation.class);
-//            intent.putExtra("role", "counselor"); // Pass role so ConversationActivity knows sender type
-//            startActivity(intent);
-//        });
+
+        chatWithUsersBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ChatListActivity.class);
+            startActivity(intent); // Pass role so ConversationActivity knows sender type
+            // TODO: You MUST pass a valid "channelId" here or ConversationActivity will fail
+            intent.putExtra("channelId", "some_valid_channel_id");
+            startActivity(intent);
+        });
 
         // Publish resources/articles for users
         publishResourceBtn.setOnClickListener(v -> {

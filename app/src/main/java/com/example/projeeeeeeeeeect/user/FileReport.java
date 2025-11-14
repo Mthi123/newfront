@@ -12,20 +12,21 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projeeeeeeeeeect.R;
-import com.example.projeeeeeeeeeect.network.ApiService; // New Import
+import com.example.projeeeeeeeeeect.network.ApiService;
 import com.example.projeeeeeeeeeect.Models.IncidentType;
-import com.example.projeeeeeeeeeect.network.RetrofitClient; // New Import
-import com.example.projeeeeeeeeeect.Models.SubmitReportRequest; // New Import
+import com.example.projeeeeeeeeeect.network.RetrofitClient;
+import com.example.projeeeeeeeeeect.Models.SubmitReportRequest;
 import com.example.projeeeeeeeeeect.Models.SubmitReportResponse;
 import com.example.projeeeeeeeeeect.Models.IncidentTypesResponse;
+import com.example.projeeeeeeeeeect.auth.SessionManager; // <-- NEW IMPORT
 
 import java.io.IOException;
-import java.util.ArrayList; // <-- NEW IMPORT
+import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call; // New Import
-import retrofit2.Callback; // New Import
-import retrofit2.Response; // New Import
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FileReport extends AppCompatActivity {
 
@@ -34,11 +35,14 @@ public class FileReport extends AppCompatActivity {
     private Button btnSubmitReport, btnCancelReport;
     private ArrayAdapter<IncidentType> spinnerAdapter;
     private ArrayList<IncidentType> incidentTypesList = new ArrayList<>();
+    private SessionManager sessionManager; // <-- NEW FIELD
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_report);
+
+        sessionManager = new SessionManager(this); // <-- INITIALIZE SessionManager
 
         // Bind views
         incidentTypeSpinner = findViewById(R.id.etIncidentType);
@@ -103,6 +107,12 @@ public class FileReport extends AppCompatActivity {
     }
 
     private void submitReport() {
+        // CRITICAL CHECK: All users (logged-in/anonymous) should now have a token
+        if (TextUtils.isEmpty(sessionManager.getAuthToken())) {
+            Toast.makeText(this, "Session invalid. Please log in or continue as Anonymous again.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         if (incidentTypeSpinner == null || etLocation == null || etDescription == null || etDate == null) {
             Log.e("FileReport", "One or more views are not initialized");
             Toast.makeText(this, "UI not fully initialized", Toast.LENGTH_SHORT).show();
@@ -132,7 +142,9 @@ public class FileReport extends AppCompatActivity {
         }
 
         SubmitReportRequest request = new SubmitReportRequest(selectedType.getId(), location, description, date);
+        // Use the authenticated client, as the token is guaranteed to be in the session
         ApiService apiService = RetrofitClient.getApiService(this);
+
         if (apiService == null) {
             Log.e("FileReport", "ApiService is null");
             Toast.makeText(this, "API service not initialized!", Toast.LENGTH_SHORT).show();
@@ -148,13 +160,15 @@ public class FileReport extends AppCompatActivity {
                     Toast.makeText(FileReport.this, "Report submitted successfully! ID: " + response.body().getReport_id(), Toast.LENGTH_LONG).show();
                     finish();
                 } else {
-                    Log.e("FileReport", "Failed to submit report. Code: " + response.code());
-                    Toast.makeText(FileReport.this, "Failed to submit report. Code: " + response.code(), Toast.LENGTH_LONG).show();
+                    // Unified robust error handling
                     Log.e("FileReport", "Failed to submit report. Code: " + response.code());
                     try {
-                        Log.e("FileReport", "Error body: " + response.errorBody().string());
+                        String errorBody = response.errorBody() != null ? response.errorBody().string() : "No error body";
+                        Log.e("FileReport", "Error body: " + errorBody);
+                        Toast.makeText(FileReport.this, "Submission failed. Server error: " + response.code(), Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         Log.e("FileReport", "Error reading errorBody", e);
+                        Toast.makeText(FileReport.this, "Submission failed. Error reading response.", Toast.LENGTH_LONG).show();
                     }
 
                 }

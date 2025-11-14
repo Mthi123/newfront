@@ -128,11 +128,46 @@ public class login extends AppCompatActivity {
         });
 
 
-        // Anonymous login (no change needed)
         anonymousButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("isAnonymous", true);
-            startActivity(intent);
+            ApiService apiService = RetrofitClient.getApiService(this);
+            Call<UserLoginResponse> call = apiService.anonymousLogin();
+
+            call.enqueue(new Callback<UserLoginResponse>() {
+                @Override
+                public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        Toast.makeText(login.this, "Logged in as Anonymous!", Toast.LENGTH_SHORT).show();
+
+                        String token = response.body().getToken();
+                        User user = response.body().getUser();
+
+                        if (token != null) {
+                            sessionManager.saveAuthToken(token);
+                        }
+
+                        if (user != null) {
+                            int userId = user.getId();
+                            int roleId = user.getRoleId();
+                            sessionManager.saveUserId(userId);
+                            sessionManager.saveRoleId(roleId);
+                        }
+
+                        // Proceed to MainActivity
+                        Intent intent = new Intent(login.this, MainActivity.class);
+                        intent.putExtra("isAnonymous", true);
+                        startActivity(intent);
+                        finish();
+
+                    } else {
+                        Toast.makeText(login.this, "Anonymous login failed. Server error: " + response.code(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<UserLoginResponse> call, Throwable t) {
+                    Toast.makeText(login.this, "Network Error on anonymous login: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         });
 
         // Go to sign-up (no change needed)

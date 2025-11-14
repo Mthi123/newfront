@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 // Import your new Kotlin Activity
-//import com.example.projeeeeeeeeeect.ConversationActivity;
+import com.example.projeeeeeeeeeect.ConversationActivity; // Corrected import
 
 import com.example.projeeeeeeeeeect.GbvApp;
 import com.example.projeeeeeeeeeect.Models.ChatStartRequest;
@@ -65,8 +65,8 @@ public class ReportDetailActivity extends AppCompatActivity {
             return; // Return here to avoid a crash if selectedReport is null
         }
 
-        // --- Chat logic is now commented out ---
-        /*
+        // --- Chat logic is now UNCOMMENTED ---
+
         Button btnStartChat = findViewById(R.id.btnStartChat);
         btnStartChat.setOnClickListener(v -> {
             if (selectedReport == null) {
@@ -139,7 +139,7 @@ public class ReportDetailActivity extends AppCompatActivity {
                 }
             });
         });
-        */
+
     }
 
     private void populateView(Report report) {

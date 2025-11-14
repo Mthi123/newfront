@@ -36,7 +36,7 @@ public class AssignCounsellorToReportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_assign_counsellor);
+        setContentView(R.layout.assign_counsellor_detail);
 
         spinnerCounsellor = findViewById(R.id.spinnerCounsellor);
         btnAssign = findViewById(R.id.btnAssignCounsellor2);

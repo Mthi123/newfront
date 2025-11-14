@@ -43,6 +43,9 @@ public interface ApiService {
     @POST("api/roles/admin")
     Call<CreateUserResponse> createUser(@Body CreateUserRequest createUserRequest);
 
+    @POST("api/auth/anonymous-login")
+    Call<UserLoginResponse> anonymousLogin();
+
 
     // --- REPORTS ---
 

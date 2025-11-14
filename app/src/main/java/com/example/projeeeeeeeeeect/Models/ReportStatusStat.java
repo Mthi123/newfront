@@ -18,5 +18,8 @@ public class ReportStatusStat {
     @SerializedName("StatusType.name")
     String nestedName;
     public String getStatusName() { return statusName; }
+    public int getCount() {
+        return count;
+    }
 
 }

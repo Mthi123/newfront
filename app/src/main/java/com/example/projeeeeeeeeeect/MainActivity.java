@@ -78,10 +78,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        //messagesButton.setOnClickListener(v -> {
-          //  Intent intent = new Intent(MainActivity.this, Conversation.class);
-         //   startActivity(intent);
-       // });
+        // --- UNCOMMENTED AND CORRECTED ---
+        messagesButton.setOnClickListener(v -> {
+            // Original was Conversation.class, corrected to ConversationActivity.class
+            Intent intent = new Intent(this, ChatListActivity.class);
+            startActivity(intent);
+        });
 
         stealthButton.setOnClickListener(v -> {
             Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.whatsapp");
@@ -147,4 +149,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-

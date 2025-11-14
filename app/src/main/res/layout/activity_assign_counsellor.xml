@@ -1,67 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CounsellorAssignmentActivity">
+    tools:context=".admin.mainbtns.specbtns.AdminReportDetailActivity">
 
+    <!-- Background Image -->
     <ImageView
+        android:id="@+id/backgroundImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/back"
         android:contentDescription="@string/background_image" />
 
+    <!-- Dark overlay for readability -->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80000000" />
+        android:background="#80000000" /> <!-- 50% black tint -->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="24dp">
+        android:fillViewport="true"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tvAssignTitle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Assign Counsellor"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="32dp"/>
+            android:orientation="vertical"
+            android:background="#80FFFFFF"
+            android:padding="16dp">
 
-        <Spinner
-            android:id="@+id/spinnerCounsellor"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@android:color/white"
-            android:padding="8dp"
-            android:spinnerMode="dropdown"
-            app:layout_constraintTop_toBottomOf="@id/tvAssignTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"/>
+            <!-- Header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report Details"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="24dp" />
 
-        <Button
-            android:id="@+id/btnAssignCounsellor2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_rounded_secondary"
-            android:text="Assign Counsellor"
+            <!-- Report ID -->
+            <TextView
+                android:id="@+id/tvReportId2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="italic"
+                android:layout_marginBottom="16dp"
+                tools:text="Report ID: 12345" />
 
-            android:textColor="@android:color/black"
+            <!-- Incident Type -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incident Type:"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvIncidentType2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="Physical Abuse" />
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="24dp"/>
+            <!-- Location -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_of_incident"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvLocation2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="123 Main Street, City Center" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Description -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/describe_what_happened"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvDescription2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:minHeight="100dp"
+                android:gravity="top"
+                android:layout_marginBottom="16dp"
+                tools:text="I was walking home when a man approached me..." />
+
+            <!-- Date of Incident -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date_of_incident_optional"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvDateOfIncident2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="2025-05-15" />
+
+            <!-- Date Reported -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report Filed On:"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvDateReported2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="2025-11-09" />
+
+            <!-- Status -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Status:"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="8dp"/>
+            <TextView
+                android:id="@+id/tvStatus2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginBottom="16dp"
+                tools:text="In Progress" />
+
+            <!-- Action Button (Start Chat) -->
+            <Button
+                android:id="@+id/btnAssignCounsellor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/assign_counsellor"
+                android:background="@drawable/button_rounded_primary"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="16dp" />
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

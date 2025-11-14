@@ -1,5 +1,6 @@
 package com.example.projeeeeeeeeeect.counselor;
 
+import android.content.Intent; // <-- NEW IMPORT
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -12,10 +13,9 @@ import com.example.projeeeeeeeeeect.auth.SessionManager;
 import com.example.projeeeeeeeeeect.network.ApiService;
 import com.example.projeeeeeeeeeect.network.RetrofitClient;
 import com.example.projeeeeeeeeeect.R;
-// CORRECTED IMPORT: Import Report from the new Models package
 import com.example.projeeeeeeeeeect.Models.Report;
 
-
+import java.io.Serializable; // <-- NEW IMPORT
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,28 +38,43 @@ public class CounsilorViewReports extends AppCompatActivity {
 
         loadReports();
 
+        // --- THIS IS THE UPDATED CLICK LISTENER ---
         reportsListView.setOnItemClickListener((parent, view, position, id) -> {
             Report selectedReport = reportList.get(position);
-            // Use public getter methods now that models are separate classes
-            String incidentTypeName = (selectedReport.getIncidentType() != null) ? selectedReport.getIncidentType().getName() : "Unknown Type";
-            Toast.makeText(this, "Report ID: " + selectedReport.getId() + ", Type: " + incidentTypeName, Toast.LENGTH_LONG).show();
-            // TODO: Implement navigation to a detailed report view
+
+            if (selectedReport == null) {
+                Toast.makeText(this, "Error: Could not load report details.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Navigate to ReportDetailActivity
+            Intent intent = new Intent(CounsilorViewReports.this, ReportDetailActivity.class);
+
+            intent.putExtra(ReportDetailActivity.EXTRA_REPORT, (Serializable) selectedReport);
+
+            startActivity(intent);
         });
     }
 
     private void loadReports() {
         SessionManager sessionManager = new SessionManager(this);
-        String token = "Bearer " + sessionManager.getAuthToken();
-        int counselorId = sessionManager.getUserId();// Ensure this returns the correct ID
+        // The token is now retrieved correctly from SessionManager
+        String token = sessionManager.getAuthToken();
+        int counselorId = sessionManager.getUserId();
 
-        if (token == null || counselorId == -1) {
+        // Check if the token is null or empty, not just the string "Bearer null"
+        if (token == null || token.isEmpty() || counselorId == -1) {
             Toast.makeText(this, "Session expired or invalid. Please log in again.", Toast.LENGTH_LONG).show();
             return;
         }
 
+        // Add "Bearer " prefix to the token
+        String authToken = "Bearer " + token;
+
         ApiService apiService = RetrofitClient.getApiService(this);
 
-        Call<List<Report>> call = apiService.getReportsByCounsellor(token, counselorId);
+        // Pass the full "Bearer <token>" string to the API
+        Call<List<Report>> call = apiService.getReportsByCounsellor(authToken, counselorId);
 
 
         call.enqueue(new Callback<List<Report>>() {

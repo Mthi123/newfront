@@ -1,5 +1,6 @@
 package com.example.projeeeeeeeeeect.admin.mainbtns;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -7,11 +8,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projeeeeeeeeeect.R;
+import com.example.projeeeeeeeeeect.admin.mainbtns.specbtns.AdminReportDetailActivity;
+import com.example.projeeeeeeeeeect.admin.mainbtns.specbtns.AdminReportsByLocationActivity;
+import com.example.projeeeeeeeeeect.admin.mainbtns.specbtns.AdminReportsByStatusActivity;
+import com.example.projeeeeeeeeeect.admin.mainbtns.specbtns.AdminReportsByTypeActivity;
+import com.example.projeeeeeeeeeect.admin.mainbtns.specbtns.AdminViewReportActivity;
 
 public class AdminReportStatsActivity extends AppCompatActivity {
 
     // Declare the 4 buttons
-    private Button viewAllReportsBtn, reportsByTypeBtn, reportsByLocationBtn, reportsByTimeBtn;
+    private Button viewAllReportsBtn, reportsByTypeBtn, reportsByLocationBtn, reportsByStatusBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,30 +29,31 @@ public class AdminReportStatsActivity extends AppCompatActivity {
         viewAllReportsBtn = findViewById(R.id.viewAllReportsBtn);
         reportsByTypeBtn = findViewById(R.id.reportsByTypeBtn);
         reportsByLocationBtn = findViewById(R.id.reportsByLocationBtn);
-        reportsByTimeBtn = findViewById(R.id.reportsByStatusBtn);
+        reportsByStatusBtn = findViewById(R.id.reportsByStatusBtn);
 
         // --- Set Click Listeners (with placeholder Toasts for now) ---
 
         viewAllReportsBtn.setOnClickListener(v -> {
-            // TODO: Open a new activity to show a list of all reports
-            // Example:
-            // Intent intent = new Intent(AdminReportStats.this, ViewAllReportsActivity.class);
-            // startActivity(intent);
+            Intent intent = new Intent(AdminReportStatsActivity.this, AdminViewReportActivity.class);
+            startActivity(intent);
             Toast.makeText(AdminReportStatsActivity.this, "View All Reports clicked", Toast.LENGTH_SHORT).show();
         });
 
         reportsByTypeBtn.setOnClickListener(v -> {
-            // TODO: Open an activity showing reports grouped by type
+            Intent intent = new Intent(AdminReportStatsActivity.this, AdminReportsByTypeActivity.class);
+            startActivity(intent);
             Toast.makeText(AdminReportStatsActivity.this, "Reports by Type clicked", Toast.LENGTH_SHORT).show();
         });
 
         reportsByLocationBtn.setOnClickListener(v -> {
-            // TODO: Open an activity showing reports on a map or by location
+            Intent intent = new Intent(AdminReportStatsActivity.this, AdminReportsByLocationActivity.class);
+            startActivity(intent);
             Toast.makeText(AdminReportStatsActivity.this, "Reports by Location clicked", Toast.LENGTH_SHORT).show();
         });
 
-        reportsByTimeBtn.setOnClickListener(v -> {
-            // TODO: Open an activity with a chart of reports over time
+        reportsByStatusBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminReportStatsActivity.this, AdminReportsByStatusActivity.class);
+            startActivity(intent);
             Toast.makeText(AdminReportStatsActivity.this, "Reports by Time clicked", Toast.LENGTH_SHORT).show();
         });
     }
