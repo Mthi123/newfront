@@ -10,17 +10,17 @@ import android.widget.Toast;
 // Import your new Kotlin Activity
 //import com.example.projeeeeeeeeeect.ConversationActivity;
 
-import com.example.projeeeeeeeeeect.GbvApp;
+//import com.example.projeeeeeeeeeect.GbvApp;
 import com.example.projeeeeeeeeeect.Models.ChatStartRequest;
 import com.example.projeeeeeeeeeect.Models.ChatStartResponse;
 import com.example.projeeeeeeeeeect.network.ApiService;
 import com.example.projeeeeeeeeeect.network.RetrofitClient;
 
 // Stream Imports
-import io.getstream.chat.android.client.ChatClient;
-import io.getstream.chat.android.models.User;
-import io.getstream.result.Error; // Import for error handling
-import retrofit2.Call;
+//import io.getstream.chat.android.client.ChatClient;
+//import io.getstream.chat.android.models.User;
+//import io.getstream.result.Error; // Import for error handling
+//import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
